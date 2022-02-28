@@ -82,14 +82,12 @@
 }
 
 .dropdown-content {
-    opacity: 0;
-    height: 0;
+    display: none;
     position: absolute;
     background-color: #C5C6C7;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    transition: height 3s ease;
 }
 
 .dropdown-content a {
@@ -103,9 +101,25 @@
     background-color: #ddd;
 }
 
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.1)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+
+.dropdown-content {
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
+}
+
 .dropdown:hover .dropdown-content {
-    opacity: 1;
-    height: auto;
+    display: block;
 }
 
 @keyframes fallingtext {
