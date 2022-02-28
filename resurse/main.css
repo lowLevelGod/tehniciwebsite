@@ -123,8 +123,9 @@ h3 {
     color: var(--h-color);
 }
 
-a {
+a,a:focus,a:visited,a:active{
     text-decoration: none;
+    color: inherit;
 }
 
 .box1 {
