@@ -1,0 +1,139 @@
+/* Color Theme Swatches in Hex */
+
+.My-Color-Theme-1-hex {
+    color: #0B0C10;
+}
+
+.My-Color-Theme-2-hex {
+    color: #1F2833;
+}
+
+.My-Color-Theme-3-hex {
+    color: #C5C6C7;
+}
+
+.My-Color-Theme-4-hex {
+    color: #66FCF1;
+}
+
+.My-Color-Theme-5-hex {
+    color: #45A29E;
+}
+
+
+/* Color Theme Swatches in RGBA */
+
+.My-Color-Theme-1-rgba {
+    color: rgba(11, 12, 16, 1);
+}
+
+.My-Color-Theme-2-rgba {
+    color: rgba(31, 40, 51, 1);
+}
+
+.My-Color-Theme-3-rgba {
+    color: rgba(197, 198, 199, 1);
+}
+
+.My-Color-Theme-4-rgba {
+    color: rgba(102, 252, 241, 1);
+}
+
+.My-Color-Theme-5-rgba {
+    color: rgba(69, 162, 158, 1);
+}
+
+
+/* Color Theme Swatches in HSLA */
+
+.My-Color-Theme-1-hsla {
+    color: hsla(228, 18, 5, 1);
+}
+
+.My-Color-Theme-2-hsla {
+    color: hsla(213, 24, 16, 1);
+}
+
+.My-Color-Theme-3-hsla {
+    color: hsla(210, 1, 77, 1);
+}
+
+.My-Color-Theme-4-hsla {
+    color: hsla(175, 96, 69, 1);
+}
+
+.My-Color-Theme-5-hsla {
+    color: hsla(177, 40, 45, 1);
+}
+
+.menu {
+    display: flex;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #0B0C10;
+    color: #66FCF1;
+    border: none;
+}
+
+.dropdown-content {
+    opacity: 0;
+    height: 0;
+    position: absolute;
+    background-color: #C5C6C7;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: height 3s ease;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    height: auto;
+}
+
+@keyframes fallingtext {
+    from {
+        background: transparent;
+        transform: translatey(-10px);
+    }
+    to {
+        transform: translatey(0px);
+    }
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #378039;
+}
+
+.dropbtn:hover {
+    animation-duration: 3s;
+    animation-name: fallingtext;
+}
+
+.foot {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #0B0C10;
+}
+
+.foot>* {
+    padding-right: 10px;
+}

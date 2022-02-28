@@ -10,6 +10,9 @@
                 so you can choose the most suitable option for you">
     <title>Software License Shop</title>
 
+    <link rel="stylesheet" href="./resurse/main.css">
+    <link rel="stylesheet" href="./resurse/menu.css">
+
     <!--FAVICON-->
     <link rel="apple-touch-icon" sizes="180x180" href="./resurse/ico/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./resurse/ico/favicon-32x32.png">
@@ -21,6 +24,8 @@
     <meta name="msapplication-config" content="./resurse/ico/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
+    <script src="https://kit.fontawesome.com/66e6ed92af.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -28,208 +33,232 @@
     <header>
         <h1>Software License Shop</h1>
         <nav>
-            <ul>
-                <li>
-                    <div>Home</div>
-                    <ul>
-                        <li><a href="#welcome">Welcome</a></li>
-                        <li><a href="#offers">Offers</a></li>
-                        <li><a href="#news">News</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
+            <ul class="menu">
+                <li class="dropdown">
+                    <button class="dropbtn"><a href="index.html"><i class="fa-solid fa-code"></i>Home</a></button>
+                    <div class="dropdown-content">
+                        <a href="./index.html#welcome">Welcome</a>
+                        <a href="./index.html#offers">Offers</a>
+                        <a href="./index.html#news">News</a>
+                        <a href="./index.html#products">Products</a>
+                        <a href="./index.html#faq">FAQ</a>
+                    </div>
                 </li>
-                <li>
-                    <div>About</div>
-                    <ul>
-                        <li><a href="despre.html#ourteam">Our team</a></li>
-                        <li><a href="despre.html#history">History</a></li>
-                        <li><a href="despre.html#motivation">Motivation</a></li>
-                        <li><a href="despre.html#gallery">Gallery</a></li>
-                    </ul>
+                <li class="dropdown">
+                    <button class="dropbtn"><a href="about.html">About</a></button>
+                    <div class="dropdown-content">
+                        <a href="despre.html#ourteam">Our team</a>
+                        <a href="despre.html#history">History</a>
+                        <a href="despre.html#motivation">Motivation</a>
+                        <a href="despre.html#gallery">Gallery</a>
+                    </div>
                 </li>
-                <li><a href="#">Contact</a></li>
+                <li class="dropdown">
+                    <button class="dropbtn"><a href="contact.html">Contact</a></button></li>
+                <li class="dropdown">
+                    <button class="dropbtn">Forms</button>
+                    <div class="dropdown-content">
+                        <a href="./feedback.html">Feedback</a>
+                        <a href="./companyform.html">Sell with us</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
-    <main>
-        <figure>
-            <picture>
-                <source media="(max-width: 480px)" srcset="./resurse/Software480w.png">
-                <source media="(max-width: 1020px)" srcset="./resurse/Software1020w.png">
-                <img src="./resurse/Software1600w.png" alt="Software">
-            </picture>
-            <figcaption>Software</figcaption>
-        </figure>
-        <section id="welcome">
-            <h2>Welcome !</h2>
-            <a href="./resurse/app.txt" download="softlicenseshop.exe" target="_blank">Download our app for desktop or
+    <main class="gridwrapper">
+        <div class="box1">
+            <figure>
+                <picture>
+                    <source media="(max-width: 480px) " srcset="./resurse/Software480w.png ">
+                    <source media="(max-width: 1020px) " srcset="./resurse/Software1020w.png ">
+                    <img src="./resurse/Software1600w.png " alt="Software ">
+                </picture>
+                <figcaption>Software</figcaption>
+            </figure>
+            <section id="welcome">
+                <h2>Welcome !</h2>
+                <a href="./resurse/app.txt " download="softlicenseshop.exe " target="_blank ">Download our app for desktop or
                 mobile</a>
-            <p>
-                Your #1 source of alternatives to popular apps.
-            </p>
-            <p>
-                We promote small companies and startups that want to compete with the tech giants.
-            </p>
-            <p>
-                Variety and freedom of choice is our motto, so we invite you to try out our products filtered through a
-                strict quality control done by our specialists to make sure you get the best experience.
-            </p>
-            <p>
-                If you are not satisfied with the software license you purchased, you can always get a refund within 30
-                days of receipt.
-            </p>
-        </section>
-        <section id="offers">
-            <h2>Offers</h2>
-            <p>
-                To make sure you get the best deals every time, the Software License Shop periodically provides new offers for your favorite apps.
-            </p>
-            <p>
-                Check out the list below !
-            </p>
-            <ul>
-                <li>Daily</li>
-                <li>Weekly</li>
-                <li>Monthly</li>
-            </ul>
-        </section>
-        <section id="news">
-            <h2>News</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis
-                elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci
-                sapien, et mattis sem lacinia in. Aliquam sapien ante, tristique et laoreet hendrerit, rutrum quis elit.
-                Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque
-                vel risus sed ligula interdum congue ac at nibh.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis
-                elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci
-                sapien, et mattis sem lacinia in. Aliquam sapien ante, tristique et laoreet hendrerit, rutrum quis elit.
-                Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque
-                vel risus sed ligula interdum congue ac at nibh.
-            </p>
-        </section>
-        <section id="products">
-            <h2>Our products</h2>
-            <p>
-                Below there's a non-exhaustive list of our most popular choices.
-            </p>
-            <section>
-                <h3>Text editors</h3>
                 <p>
-                   Want a smooth customizable experience when writing an essay or programming in your prefered language ? Check out the list below
+                    Your #1 source of alternatives to popular apps.
+                </p>
+                <p>
+                    We promote small companies and startups that want to compete with the tech giants.
+                </p>
+                <p>
+                    Variety and freedom of choice is our motto, so we invite you to try out our products filtered through a strict quality control done by our specialists to make sure you get the best experience.
+                </p>
+                <p>
+                    If you are not satisfied with the software license you purchased, you can always get a refund within 30 days of receipt.
+                </p>
+            </section>
+        </div>
+        <div class="box3">
+            <section id="offers">
+                <h2>Offers</h2>
+                <p>
+                    To make sure you get the best deals every time, the Software License Shop periodically provides new offers for your favorite apps.
+                </p>
+                <p>
+                    Check out the list below !
                 </p>
                 <ul>
-                    <li>Zimtex</li>
-                    <li>Canlux</li>
-                    <li>Indidexon</li>
+                    <li>Daily</li>
+                    <li>Weekly</li>
+                    <li>Monthly</li>
                 </ul>
             </section>
-            <section>
-                <h3>Image editors</h3>
+        </div>
+        <div class="box5">
+            <section id="news">
+                <h2>News</h2>
                 <p>
-                    Want to get the most out of your favorite pictures and make them shine ? Check out the list below
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                    ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
                 </p>
-                <ul>
-                    <li>Granitelight</li>
-                    <li>Apachestone</li>
-                    <li>Peachworks</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Video players</h3>
                 <p>
-                    Want to watch the new movie you just downloaded or relive memories captured in a video ? Check out the list below
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                    ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
                 </p>
-                <ul>
-                    <li>Vineshow</li>
-                    <li>Globaltube</li>
-                    <li>Zamzamcore</li>
-                </ul>
             </section>
-            <p> 
-                If you still didn't find what you were looking for, visit our dedicated page for all the products.
-            </p>
-        </section>
-        <section id="faq">
-            <h2>FAQ</h2>
-            <details>
-                <summary>Why would i choose your products ? </summary>
-                <ul>
-                    <li>We support small companies</li>
-                    <li>We help create fair competition in the IT industry</li>
-                    <li>Quality control</li>
-                    <li>Variety of products in every category</li>
-                </ul>
+        </div>
+        <div class="box2">
+            <table>
+                <tr>
+                    <td>Text editors</td>
+                    <td>Image editors</td>
+                    <td>Video players</td>
+                </tr>
+                <tr>
+                    <td>Zimtex</td>
+                    <td>Granitelight</td>
+                    <td>Vineshow</td>
+                </tr>
+                <tr>
+                    <td>Canlux</td>
+                    <td>Apachestone</td>
+                    <td>Globaltube</td>
+                </tr>
+                <tr>
+                    <td>Indidexon</td>
+                    <td>Peachworks</td>
+                    <td>Zamzamcore</td>
+                </tr>
+            </table>
+        </div>
+        <div class="box6">
+            <section id="products">
+                <h2>Our products</h2>
+                <p>
+                    Below there's a non-exhaustive list of our most popular choices.
+                </p>
+                <section>
+                    <h3>Text editors</h3>
+                    <p>
+                        Want a smooth customizable experience when writing an essay or programming in your prefered language ? Check out the list below
+                    </p>
+                    <ul>
+                        <li>Zimtex</li>
+                        <li>Canlux</li>
+                        <li>Indidexon</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Image editors</h3>
+                    <p>
+                        Want to get the most out of your favorite pictures and make them shine ? Check out the list below
+                    </p>
+                    <ul>
+                        <li>Granitelight</li>
+                        <li>Apachestone</li>
+                        <li>Peachworks</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Video players</h3>
+                    <p>
+                        Want to watch the new movie you just downloaded or relive memories captured in a video ? Check out the list below
+                    </p>
+                    <ul>
+                        <li>Vineshow</li>
+                        <li>Globaltube</li>
+                        <li>Zamzamcore</li>
+                    </ul>
+                </section>
+                <p>
+                    If you still didn't find what you were looking for, visit our dedicated page for all the products.
+                </p>
+            </section>
+        </div>
+        <div class="box4">
+            <section id="faq">
+                <h2>FAQ</h2>
+                <details>
+                    <summary>Why would i choose your products ? </summary>
+                    <ul>
+                        <li>We support small companies</li>
+                        <li>We help create fair competition in the IT industry</li>
+                        <li>Quality control</li>
+                        <li>Variety of products in every category</li>
+                    </ul>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis
-                    sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris
-                    consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien ante, tristique et laoreet
-                    hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi.
-                    Proin
-                    ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
-                </p>
-            </details>
-            <details>
-                <summary>How do i request a refund ?</summary>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis
-                    sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris
-                    consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien ante, tristique et laoreet
-                    hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi.
-                    Proin
-                    ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis
-                    sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris
-                    consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien ante, tristique et laoreet
-                    hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi.
-                    Proin
-                    ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
-                </p>
-            </details>
-            <details>
-                <summary>What are the payment methods available ?</summary>
-                <ul>
-                    <li>Card</li>
-                    <li><a target="_blank" href="https://www.paypal.com/en/home">PayPal</a>
-                        <iframe width="667" height="375" src="https://www.youtube.com/embed/C7Mhi5PS7TA"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </li>
-                    <li>Bitcoin
-                        <iframe width="667" height="375" src="https://www.youtube.com/embed/FoeSOe31lcI"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </li>
-                </ul>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis
-                    sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris
-                    consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien ante, tristique et laoreet
-                    hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi.
-                    Proin
-                    ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
-                </p>
-            </details>
-        </section>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                        ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
+                    </p>
+                </details>
+                <details>
+                    <summary>How do i request a refund ?</summary>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                        ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                        ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
+                    </p>
+                </details>
+                <details>
+                    <summary>What are the payment methods available ?</summary>
+                    <ul>
+                        <li>Card</li>
+                        <li><a target="_blank " href="https://www.paypal.com/en/home ">PayPal</a>
+                            <iframe width="667 " height="375 " src="https://www.youtube.com/embed/C7Mhi5PS7TA " title="YouTube video player " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture " allowfullscreen></iframe>
+                        </li>
+                        <li>Bitcoin
+                            <iframe width="667 " height="375 " src="https://www.youtube.com/embed/FoeSOe31lcI " title="YouTube video player " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture " allowfullscreen></iframe>
+                        </li>
+                    </ul>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                        ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
+                    </p>
+                </details>
+            </section>
+        </div>
+        <div class="box7">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac diam tortor. Mauris quis sagittis elit. Morbi sed nisi urna. Phasellus consequat tortor vel congue maximus. Mauris consectetur orci sapien, et mattis sem lacinia in. Aliquam sapien
+                ante, tristique et laoreet hendrerit, rutrum quis elit. Nam erat lacus, viverra at ullamcorper in, sollicitudin eu nisi. Proin ut suscipit nisi. Pellentesque vel risus sed ligula interdum congue ac at nibh.
+            </p>
+        </div>
 
     </main>
     <footer>
-        <a href="#">Top of the page</a>
-        <a href="tel:123-456-7890">Call us</a>
-        <a href="https://goo.gl/maps/BwB23aMdMN29GQFn6">Address</a>
-        <a href="mailto:softlicenseshop@softlicenseshop.com">Email us</a>
-        <a href="https://wa.me/1234567890">Whatsapp</a>
-        <small>Copyright &copy;2022 SLS
-            <time datetime="2022-02-16">16 Februarie</time>
+        <div class="toppage">
+            <a href="#">
+                <div class="triangle"></div>
+            </a>
+        </div>
+        <div class="foot">
+            <a href="tel:123-456-7890 ">Call us</a>
+            <a href="https://goo.gl/maps/BwB23aMdMN29GQFn6 ">Address</a>
+            <a href="mailto:softlicenseshop@softlicenseshop.com ">Email us</a>
+            <a href="https://wa.me/1234567890 ">Whatsapp</a>
+            <small>Copyright &copy;2022 SLS
+            <time datetime="2022-02-16 ">16 Februarie</time>
         </small>
+        </div>
     </footer>
 
 </body>
