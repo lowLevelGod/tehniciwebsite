@@ -66,37 +66,133 @@
     color: hsla(177, 40, 45, 1);
 }
 
+@keyframes textstretch {
+    from {
+        transform: scale(0, 0);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+.ham div {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.menu-btn {
+    display: none;
+}
+
 .menu {
-    display: flex;
+    display: none;
 }
 
-@media only screen and (max-width:1020px)
-{
-.acasa{
-    display:none;
-}
+.acasa {
+    display: none;
 }
 
+.menu-btn:checked~.menu {
+    display: block;
+    padding: 0px;
+    border: 0px;
+}
 
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: block;
 }
 
 .dropbtn {
     background-color: #0B0C10;
-    color: #66FCF1;
+    color: var(--sec-text-color);
     border: none;
-    transition: text-shadow 0.5s;
-    text-shadow: 0px -20px var(--main-bg-color);
+    width: 100%;
+    animation: textstretch 300ms ease-in-out forwards;
+    /*transition: text-shadow 0.5s;
+    text-shadow: 0px -20px var(--main-bg-color);*/
 }
+
 .dropdown-content {
     display: none;
-    position: absolute;
+    /*position: absolute;*/
     background-color: #C5C6C7;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+}
+
+@media only screen and (min-width:1020px) {
+    .hamlabel {
+        display: none;
+    }
+    .ham div {
+        display: none;
+    }
+    .menu {
+        display: flex;
+    }
+    .menu-icon {
+        display: none;
+    }
+    .dropbtn {
+        background-color: #0B0C10;
+        color: var(--sec-text-color);
+        border: none;
+        transition: text-shadow 0.5s;
+        text-shadow: 0px -20px var(--main-bg-color);
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #C5C6C7;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+}
+
+@media only screen and (min-width:1600px) {
+    .hamlabel {
+        display: none;
+    }
+    .ham div {
+        display: none;
+    }
+    .menu {
+        display: flex;
+    }
+    .menu-icon {
+        display: none;
+    }
+    .dropbtn {
+        background-color: #0B0C10;
+        color: var(--sec-text-color);
+        border: none;
+        transition: text-shadow 0.5s;
+        text-shadow: 0px -20px var(--main-bg-color);
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #C5C6C7;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    .acasa {
+        display: inline;
+    }
 }
 
 .dropdown-content a {
@@ -134,6 +230,7 @@
     display: block;
 }
 
+
 /*@keyframes fallingtext {
     from {
        text-shadow: 0px -20px #9ff3ed;
@@ -148,8 +245,8 @@
 }
 
 .dropbtn:hover {
-    text-shadow:0px 0px var(--main-text-color);
-    color: red;
+    text-shadow: 0px 0px var(--main-text-color);
+    color: #91f5ee;
 }
 
 .foot {
