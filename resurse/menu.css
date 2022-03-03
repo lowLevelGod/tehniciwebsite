@@ -68,10 +68,10 @@
 
 @keyframes textstretch {
     from {
-        transform: scale(0, 0);
+        transform: scaleX(0)
     }
     to {
-        transform: scale(1, 1);
+        transform: scaleX(1);
     }
 }
 
@@ -133,6 +133,8 @@
     }
     .menu {
         display: flex;
+        justify-content: space-between;
+        padding: 0px;
     }
     .menu-icon {
         display: none;
@@ -155,6 +157,9 @@
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
+    }
+    .menu>.dropdown {
+        flex: 1;
     }
 }
 
@@ -167,6 +172,8 @@
     }
     .menu {
         display: flex;
+        justify-content: space-between;
+        padding: 0px;
     }
     .menu-icon {
         display: none;
@@ -189,6 +196,10 @@
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
+    }
+    .menu>.dropdown {
+        flex: 1;
+        justify-content: space-between;
     }
     .acasa {
         display: inline;
@@ -228,6 +239,7 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+    width: 100%;
 }
 
 

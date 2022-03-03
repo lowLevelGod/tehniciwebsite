@@ -123,7 +123,10 @@ h3 {
     color: var(--h-color);
 }
 
-a,a:focus,a:visited,a:active{
+a,
+a:focus,
+a:visited,
+a:active {
     text-decoration: none;
     color: inherit;
 }
@@ -183,20 +186,72 @@ td {
 
 .toppage {
     position: fixed;
-    right: 0;
+    right: 0%;
     bottom: 10%;
     left: 95%;
     width: 35px;
     height: 35px;
     transform: rotate(-45deg);
     border: 1px solid var(--h-color);
+    background-color: rgb(3, 124, 139);
+    transition: background- 300ms ease-in-out;
+    opacity: 0.5;
 }
 
 .triangle {
-    border-top: none;
-    border-left: transparent;
-    border-right: stransparent;
-    border-bottom: 10px solid var(--main-text-color);
-    margin: 17px;
-    border-radius: 100px;
+    width: 0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-top: 0;
+    border-bottom: 20px solid rgb(199, 200, 201);
+    transform: rotate(45deg);
+    position: absolute;
+    left: calc(50% - 10px);
+    top: calc(50% - 10px);
+    border-radius: 50%;
+    transition: border-bottom 300ms ease-in-out;
+}
+
+.toppage:hover {
+    background-color: rgb(2, 66, 75);
+    opacity: 1;
+}
+
+.toppage:hover .triangle {
+    border-bottom: 20px solid rgb(247, 248, 250);
+}
+
+img {
+    width: 100%;
+}
+
+.iframescreen {
+    border: thick solid var(--h-color);
+    z-index: 5;
+}
+
+.iframewrapper {
+    display: flex;
+}
+
+.iframecolumn {
+    position: relative;
+    left: -5px;
+}
+
+.iframecolumn a {
+    display: block;
+    background-color: rgb(182, 182, 182);
+    color: rgb(85, 85, 85);
+    border-radius: 10%;
+    border: 5px double var(--sec-bg-color);
+    width: 80px;
+    transition: width 300ms ease-in-out;
+    position: relative;
+    text-align: center;
+}
+
+.iframecolumn a:hover {
+    width: 100px;
+    background-color: #6abbb6;
 }
