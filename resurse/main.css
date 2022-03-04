@@ -71,11 +71,12 @@
 
 html {
     font-size: 16px;
+    font-family: 'Rowdies', cursive;
 }
 
 .gridwrapper {
     display: grid;
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     grid-template-areas: "b1" "b3" "b2" "b4" "b5" "b6" "b7" "b8";
 }
 
@@ -85,10 +86,10 @@ html {
 @media only screen and (min-width: 1020px) {
     html {
         font-size: 18px;
+        font-family: 'Rowdies', cursive;
     }
     .gridwrapper {
         display: grid;
-        grid-template-rows: repeat(9, 1fr);
         grid-template-columns: 1fr 2fr;
         grid-template-rows: repeat(5, 1fr);
         grid-template-areas: "b1 b1" "b3 b2" "b4 b5" "b6 b7" "b8 b8";
@@ -98,10 +99,11 @@ html {
 @media only screen and (min-width: 1600px) {
     html {
         font-size: 20px;
+        font-family: 'Rowdies', cursive;
     }
     .gridwrapper {
         display: grid;
-        grid-template-rows: 1fr 2fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 2fr 1fr;
         grid-template-columns: 1fr 1fr 2fr;
         grid-template-areas: "b1 b1 b1" "b3 b2 b4" "b5 b6 b7" "b8 b8 b8";
     }
@@ -113,6 +115,7 @@ body {
     --h-color: #66FCF1;
     --sec-bg-color: #0B0C10;
     --sec-text-color: #45A29E;
+    --link-color: #80d7ff;
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
 }
@@ -128,53 +131,63 @@ a:focus,
 a:visited,
 a:active {
     text-decoration: none;
-    color: inherit;
+    color: var(--link-color);
+    font-weight: bold;
 }
 
 .box1 {
     grid-area: b1;
+    text-align: center;
+    border: 2px solid var(--link-color);
     /*grid-column: 1 / 4;
     grid-row: 1 / 2;*/
 }
 
 .box2 {
     grid-area: b2;
+    border: 2px solid var(--link-color);
     /*grid-column: 2 / 3;
     grid-row: 2 / 3;*/
 }
 
 .box3 {
     grid-area: b3;
+    border: 2px solid var(--link-color);
     /*grid-column: 1 / 2;
     grid-row: 2 / 3;*/
 }
 
 .box4 {
     grid-area: b4;
+    border: 2px solid var(--link-color);
     /*grid-column: 3 / 4;
     grid-row: 2 / 3;*/
 }
 
 .box5 {
     grid-area: b5;
+    border: 2px solid var(--link-color);
     /*grid-column: 1 / 2;
     grid-row: 3 / 4;*/
 }
 
 .box6 {
     grid-area: b6;
+    border: 2px solid var(--link-color);
     /*grid-column: 2 / 3;
     grid-row: 3 / 4;*/
 }
 
 .box7 {
     grid-area: b7;
+    border: 2px solid var(--link-color);
     /*grid-column: 3 / 4;
     grid-row: 3 / 4;*/
 }
 
 .box8 {
     grid-area: b8;
+    border: 2px solid var(--link-color);
     /*grid-column: 1 / 4;
     grid-row: 3 / 4;*/
 }
@@ -222,7 +235,7 @@ td {
 }
 
 img {
-    width: 100%;
+    width: 50%;
 }
 
 .iframescreen {

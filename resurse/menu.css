@@ -78,7 +78,7 @@
 .ham div {
     width: 35px;
     height: 5px;
-    background-color: black;
+    background-color: var(--h-color);
     margin: 6px 0;
 }
 
@@ -106,8 +106,10 @@
 }
 
 .dropbtn {
+    font-family: 'Rowdies', cursive;
+    font-size: 1.2rem;
     background-color: #0B0C10;
-    color: var(--sec-text-color);
+    color: var(--link-color);
     border: none;
     width: 100%;
     animation: textstretch 300ms ease-in-out forwards;
@@ -118,7 +120,7 @@
 .dropdown-content {
     display: none;
     /*position: absolute;*/
-    background-color: #C5C6C7;
+    background-color: var(--sec-bg-color);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -140,11 +142,13 @@
         display: none;
     }
     .dropbtn {
+        font-family: 'Rowdies', cursive;
+        font-size: 1.2rem;
         background-color: #0B0C10;
-        color: var(--sec-text-color);
+        color: var(--link-color);
         border: none;
         transition: text-shadow 0.5s;
-        text-shadow: 0px -20px var(--main-bg-color);
+        text-shadow: 0px -30px var(--main-bg-color);
     }
     .dropdown {
         position: relative;
@@ -153,7 +157,7 @@
     .dropdown-content {
         display: none;
         position: absolute;
-        background-color: #C5C6C7;
+        background-color: var(--sec-bg-color);
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
@@ -179,11 +183,13 @@
         display: none;
     }
     .dropbtn {
+        font-family: 'Rowdies', cursive;
+        font-size: 1.2rem;
         background-color: #0B0C10;
-        color: var(--sec-text-color);
+        color: var(--link-color);
         border: none;
         transition: text-shadow 0.5s;
-        text-shadow: 0px -20px var(--main-bg-color);
+        text-shadow: 0px -30px var(--main-bg-color);
     }
     .dropdown {
         position: relative;
@@ -192,7 +198,7 @@
     .dropdown-content {
         display: none;
         position: absolute;
-        background-color: #C5C6C7;
+        background-color: var(--sec-bg-color);
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
@@ -207,7 +213,7 @@
 }
 
 .dropdown-content a {
-    color: black;
+    color: var(--link-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -216,8 +222,8 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
-    text-decoration: underline solid var(--main-bg-color);
+    background-color: var(--main-bg-color);
+    text-decoration: underline solid var(--main-text-color);
 }
 
 @keyframes growDown {
@@ -253,7 +259,7 @@
 }*/
 
 .dropdown:hover .dropbtn {
-    background-color: #378039;
+    background-color: #4f5158;
 }
 
 .dropbtn:hover {

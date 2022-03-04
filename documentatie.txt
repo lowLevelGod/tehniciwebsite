@@ -1,0 +1,40 @@
+
+Site-ul are scopul de a promova dezvoltatorii de aplicatii  ce vor sa se lanseze pe piata si de a le publica/distribui produsele. Acestia primesc 80% din venitul generat de vanzarea produselor. De asemena, nu sunt acceptate companii deja cunoscute sau care detin monopol asupra domeniului respectiv, intrucat site-ul promoveaza concurenta libera pe piata si disponibilitatea unei game largi de optiuni pentru consumatori.
+Aplicatiile comercializate pot fi pentru desktop, cat si pentru mobil. Acestea includ editoare text, foto, video playere, aplicatii de chat, programe pentru arhivare etc. Produsele vor fi afisate pe categorii pentru ca utilizatorul sa poata gasi cu usurinta ce cauta. De asemenea, sunt acceptate numai aplicatii ce trec de revizuirea calitatii executata de specialistii nostri, astfel incat experienta consumatorilor sa fie cea mai buna.
+Pagini:
+1.	Acasa(scurta descriere a site-ului + stiri + oferte + scurta prezentare a produselor + faq)
+2.	Despre(motivatia din spatele crearii site-ului + echipa noastra)
+3.	Contact(modalitatile de contact + adresa)
+4.	Formular de solicitare a publicarii unui produs(campurile ce trebuie completate de companiile ce vor sa isi distribuie software-ul prin intermediul site-ului)
+Cuvinte cheie site: publish, software, small companies, fair competition, license, startup, variety, tech
+Cuvinte cheie pagini:
+1.	Acasa: publish, software, small companies, fair competition, license, startup, tech
+2.	Despre: motivation, fair competition, consumer, our team, variety
+3.	Contact: email, twitter, facebook, whatsapp, Instagram, phone
+4.	Formular: ideas, innovation, company name, quality control
+Site-uri similare
+- https://www.netted.net/
+1.	Pro: interfata minimalista, usor de navigat
+2.	Contra: continut inghesuit, rezultatele nu pot fi sortate
+- https://www.springwise.com/
+1.	Pro: aspect profesionist, interfata intuitiva
+2.	Contra: prea mult continut per pagina, design generic 
+- https://www.producthunt.com/
+1.	Pro: design simplist, paginile sunt aerisite
+2.	Contra: prea multe animatii, timp de incarcare a paginii crescut
+- https://thestartuppitch.com/
+1.	Pro: interfata minimalista, text concis
+2.	Contra: lipsa functiei de cautare, continut dezorganizat
+- https://itch.io/
+1.	Pro: interfata intuitiva, multe optiuni de filtrare a continutului
+2.	Contra: prea mult continut per pagina, contrast nepotrivit al culorilor 
+Schema cromatica: 
+•	color: #0B0C10;
+•	color: #1F2833;
+•	color: #C5C6C7;
+•	color: #66FCF1;
+•	color: #45A29E;
+Am ales un fundal inchis pentru a nu fi obositor pentru ochi si pentru nu distrage atentia de la continut. Culoarea albastra, ce simbolizeaza “competenta” si “calitatea”,  scoate site-ul din clasicul model de “negru pe alb” si ofera un aspect creativ.
+
+
+
