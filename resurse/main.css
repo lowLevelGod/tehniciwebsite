@@ -103,9 +103,9 @@ html {
     }
     .gridwrapper {
         display: grid;
-        grid-template-rows: 1fr 1fr 2fr 1fr;
-        grid-template-columns: 1fr 1fr 2fr;
-        grid-template-areas: "b1 b1 b1" "b3 b2 b4" "b5 b6 b7" "b8 b8 b8";
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: "b1 b1 b1 b1" "b3 b2 b2 b4" "b5 b2 b2 b4" "b5 b6 b6 b7" "b8 b8 b8 b8";
     }
 }
 
