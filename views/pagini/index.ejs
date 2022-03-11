@@ -2,79 +2,10 @@
 
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Petre">
-    <meta name="keywords" content="license, alternative software, indie, variety">
-    <meta name="description" content="We provide alternative products to the main companies
-                so you can choose the most suitable option for you">
-    <title>Software License Shop</title>
-
-    <link rel="stylesheet" href="resurse/main.css">
-    <link rel="stylesheet" href="resurse/menu.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
-
-
-    <!--FAVICON-->
-    <link rel="apple-touch-icon" sizes="180x180" href="./resurse/ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./resurse/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./resurse/ico/favicon-16x16.png">
-    <link rel="manifest" href="./resurse/ico/site.webmanifest">
-    <link rel="mask-icon" href="./resurse/ico/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="./resurse/ico/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="./resurse/ico/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-
-    <script src="https://kit.fontawesome.com/66e6ed92af.js" crossorigin="anonymous"></script>
-
-
-</head>
+<%- include("../../fragmente/head.ejs") %>
 
 <body>
-    <header>
-        <h1>Software License Shop <i class="fas fa-sync fa-spin"></i></h1>
-        <nav>
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
-            <label class="hamlabel" for="menu-btn"> <div class="ham">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div></label>
-            <ul class="menu">
-                <li class="dropdown">
-                    <button class="dropbtn"><a href="index"><i class="fa-solid fa-house-chimney"></i></i><span class="acasa">Home</span></a></button>
-                    <div class="dropdown-content">
-                        <a href="./index#welcome">Welcome</a>
-                        <a href="./index#offers">Offers</a>
-                        <a href="./index#news">News</a>
-                        <a href="./index#products">Products</a>
-                        <a href="./index#faq">FAQ</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <button class="dropbtn"><a href="about.html">About</a></button>
-                    <div class="dropdown-content">
-                        <a href="despre.html#ourteam">Our team</a>
-                        <a href="despre.html#history">History</a>
-                        <a href="despre.html#motivation">Motivation</a>
-                        <a href="despre.html#gallery">Gallery</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <button class="dropbtn"><a href="contact.html">Contact</a></button></li>
-                <li class="dropdown">
-                    <button class="dropbtn">Forms</button>
-                    <div class="dropdown-content">
-                        <a href="./feedback.html">Feedback</a>
-                        <a href="./companyform.html">Sell with us</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("../../fragmente/header.ejs") %>
     <main class="gridwrapper">
         <div class="box1">
             <section id="welcome">
