@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Error 404</title>
+    <link rel="stylesheet" href="/resurse/style/404.css">
+    <%- include("../../fragmente/head.ejs") %>
+</head>
+
+<body>
+    <%- include("../../fragmente/header.ejs") %>
+        <main>
+            <h1>Error 404 !</h1>
+            <p>Somebody bring a crawler...</p>
+            <div class="pic404">
+                <picture>
+                    <source media="(max-width: 480px) " srcset="/resurse/pics/brokenlink160.png ">
+                    <source media="(max-width: 1020px) " srcset="/resurse/pics/brokenlink480.png ">
+                    <img src="/resurse/pics/brokenlink640.png " alt="Software ">
+                </picture>
+            </div>
+        </main>
+        <%- include("../../fragmente/footer.ejs") %>
+
+</body>
+
+</html>

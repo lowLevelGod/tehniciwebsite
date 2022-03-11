@@ -1,0 +1,4 @@
+video::cue {
+    background-color: rgba(255, 255, 255, .3);
+    color: var(--main-bg-color);
+}

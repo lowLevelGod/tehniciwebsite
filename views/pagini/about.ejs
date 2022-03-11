@@ -2,14 +2,63 @@
 
 <html lang="en">
 
-<%- include("../../fragmente/head.ejs") %>
+<head>
+    <title>About</title>
+    <link rel="stylesheet" href="/resurse/style/about.css">
+    <%- include("../../fragmente/head.ejs") %>
+</head>
 
 <body>
     <%- include("../../fragmente/header.ejs") %>
-    <main>
-        <h1>About !</h1>
-    </main>
-    <%- include("../../fragmente/footer.ejs") %>
+        <main>
+            <h1>About !</h1>
+            <section id="ourteam">
+                <h2>Our team</h2>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non cursus erat. Mauris molestie nec mauris sed lacinia. Curabitur condimentum varius justo, quis dictum leo consectetur non. Fusce faucibus varius nulla id posuere. Sed eros
+                    massa, mollis et mollis a, convallis id urna. Maecenas augue ante, feugiat sed orci id, consequat tempor lacus. Phasellus dignissim ligula quis condimentum imperdiet. Fusce commodo suscipit mattis. Praesent tempor ut enim in blandit.
+                    Praesent ac mauris metus. Sed ornare leo sit amet justo cursus ultrices. Morbi imperdiet orci suscipit odio iaculis blandit. Aliquam erat volutpat. Vivamus in vestibulum tortor. Donec massa lorem, pharetra eget est at, faucibus gravida
+                    ligula. Donec sed velit odio. Nullam ex ligula, iaculis eget est ut, posuere luctus libero. Sed pharetra ante et velit vestibulum eleifend. Sed euismod gravida neque, vitae consectetur nunc imperdiet ut. In venenatis mauris at libero
+                    fermentum consequat. Aenean at urna ornare, aliquam nisl sit amet, tempus ex. Praesent ut dui vitae justo semper tempor in iaculis turpis. Vestibulum eu eros in lectus vestibulum aliquet. Sed est nunc, semper a lectus eu, accumsan
+                    fermentum ex. Integer rhoncus, urna vel suscipit sodales, metus dolor volutpat sapien, hendrerit ornare tortor mi eget leo. Maecenas id viverra arcu, sit amet interdum metus. Etiam vehicula nunc non efficitur ultrices.
+                </p>
+            </section>
+            <section id="history">
+                <h2>History</h2>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non cursus erat. Mauris molestie nec mauris sed lacinia. Curabitur condimentum varius justo, quis dictum leo consectetur non. Fusce faucibus varius nulla id posuere. Sed eros
+                    massa, mollis et mollis a, convallis id urna. Maecenas augue ante, feugiat sed orci id, consequat tempor lacus. Phasellus dignissim ligula quis condimentum imperdiet. Fusce commodo suscipit mattis. Praesent tempor ut enim in blandit.
+                    Praesent ac mauris metus. Sed ornare leo sit amet justo cursus ultrices. Morbi imperdiet orci suscipit odio iaculis blandit. Aliquam erat volutpat. Vivamus in vestibulum tortor. Donec massa lorem, pharetra eget est at, faucibus gravida
+                    ligula. Donec sed velit odio. Nullam ex ligula, iaculis eget est ut, posuere luctus libero. Sed pharetra ante et velit vestibulum eleifend. Sed euismod gravida neque, vitae consectetur nunc imperdiet ut. In venenatis mauris at libero
+                    fermentum consequat. Aenean at urna ornare, aliquam nisl sit amet, tempus ex. Praesent ut dui vitae justo semper tempor in iaculis turpis. Vestibulum eu eros in lectus vestibulum aliquet. Sed est nunc, semper a lectus eu, accumsan
+                    fermentum ex. Integer rhoncus, urna vel suscipit sodales, metus dolor volutpat sapien, hendrerit ornare tortor mi eget leo. Maecenas id viverra arcu, sit amet interdum metus. Etiam vehicula nunc non efficitur ultrices.
+                </p>
+            </section>
+            <section id="motivation">
+                <h2>Motivation</h2>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non cursus erat. Mauris molestie nec mauris sed lacinia. Curabitur condimentum varius justo, quis dictum leo consectetur non. Fusce faucibus varius nulla id posuere. Sed eros
+                    massa, mollis et mollis a, convallis id urna. Maecenas augue ante, feugiat sed orci id, consequat tempor lacus. Phasellus dignissim ligula quis condimentum imperdiet. Fusce commodo suscipit mattis. Praesent tempor ut enim in blandit.
+                    Praesent ac mauris metus. Sed ornare leo sit amet justo cursus ultrices. Morbi imperdiet orci suscipit odio iaculis blandit. Aliquam erat volutpat. Vivamus in vestibulum tortor. Donec massa lorem, pharetra eget est at, faucibus gravida
+                    ligula. Donec sed velit odio. Nullam ex ligula, iaculis eget est ut, posuere luctus libero. Sed pharetra ante et velit vestibulum eleifend. Sed euismod gravida neque, vitae consectetur nunc imperdiet ut. In venenatis mauris at libero
+                    fermentum consequat. Aenean at urna ornare, aliquam nisl sit amet, tempus ex. Praesent ut dui vitae justo semper tempor in iaculis turpis. Vestibulum eu eros in lectus vestibulum aliquet. Sed est nunc, semper a lectus eu, accumsan
+                    fermentum ex. Integer rhoncus, urna vel suscipit sodales, metus dolor volutpat sapien, hendrerit ornare tortor mi eget leo. Maecenas id viverra arcu, sit amet interdum metus. Etiam vehicula nunc non efficitur ultrices.
+                </p>
+            </section>
+            <section id="gallery">
+                <h2>Gallery</h2>
+                <video controls poster="/resurse/pics/Software1020w.png" width="30%" preload="metadata">
+                    <source src="/resurse/vids/Redvidwebm.webm"
+                            type="video/webm">
+                
+                    <source src="/resurse/vids/Redvidmp4.mp4"
+                            type="video/mp4">
+                    <track default src="/resurse/vtt/romanian.vtt" kind="subtitles"
+                                    label="Romanian subtitles" srclang="ro">
+                    <track src="/resurse/vtt/english.vtt"  kind="subtitles"
+                    label="English subtitles" srclang="en">
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </section>
+        </main>
+        <%- include("../../fragmente/footer.ejs") %>
 
 </body>
 

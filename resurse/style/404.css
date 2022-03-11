@@ -1,0 +1,12 @@
+.pic404 {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pic404 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
