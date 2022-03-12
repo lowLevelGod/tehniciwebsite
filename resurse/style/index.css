@@ -1,0 +1,46 @@
+.tablewrap {
+    width: 300px;
+    display: block;
+    position: relative;
+    overflow-x: scroll;
+}
+
+@media only screen and (min-width:1600px) {
+    .tablewrap {
+        width: 800px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+}
+
+.tablewrap table {
+    border: 7px inset var(--sec-text-color);
+}
+
+.tablewrap tr {
+    outline: none;
+    transition: outline 0.5s ease-in-out;
+}
+
+.tablewrap tr:hover {
+    outline: 7px solid rgba(43, 226, 150, 0.7);
+}
+
+#tablehead th {
+    border: 1px solid var(--main-text-color);
+}
+
+.tablewrap tr:nth-child(even)>td,
+.tablewrap tr:nth-child(even)>th {
+    border: 1px solid var(--main-text-color);
+}
+
+.tablewrap tr:nth-child(odd)>td,
+.tablewrap tr:nth-child(odd)>th {
+    border: 1px solid var(--link-color);
+}
+
+.tablewrap caption {
+    caption-side: bottom;
+}

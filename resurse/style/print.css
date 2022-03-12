@@ -1,0 +1,55 @@
+@media print {
+    .banner {
+        position: relative;
+    }
+    .banner h1 {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 3px double black;
+        width: 50%;
+    }
+    img,
+    video,
+    iframe,
+    .iframewrapper,
+    figure,
+    .toppage {
+        display: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .menu {
+        display: list-item;
+    }
+    .acasa {
+        display: inline;
+    }
+    .dropdown {
+        position: relative;
+        display: block;
+    }
+    .dropbtn {
+        font-family: 'Rowdies', cursive;
+        font-size: 1.2rem;
+        background-color: #dddddd;
+        color: var(--link-color);
+        border: none;
+        width: 100%;
+    }
+    .dropdown-content {
+        display: block;
+        /*position: absolute;*/
+        background-color: var(--sec-bg-color);
+        min-width: 160px;
+    }
+    nav {
+        clear: both;
+        page-break-after: always;
+    }
+    footer {
+        page-break-before: always;
+    }
+}

@@ -192,11 +192,6 @@ a:active {
     grid-row: 3 / 4;*/
 }
 
-table,
-td {
-    border: 1px solid var(--h-color);
-}
-
 .toppage {
     position: fixed;
     right: 0%;
