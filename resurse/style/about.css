@@ -2,3 +2,36 @@ video::cue {
     background-color: rgba(255, 255, 255, .3);
     color: var(--main-bg-color);
 }
+
+.hrwrapper {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.hrwrapper .ltriangle {
+    width: 0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-top: 0;
+    border-bottom: 50px solid var(--main-text-color);
+    transform: rotate(90deg);
+}
+
+.hrwrapper .rtriangle {
+    width: 0px;
+    height: 0px;
+    border: 10px solid transparent;
+    border-top: 0;
+    border-bottom: 50px solid var(--main-text-color);
+    transform: rotate(-90deg);
+}
+
+.hrwrapper hr {
+    position: relative;
+    top: 0;
+    margin-top: 1%;
+    width: 97%;
+    background-color: var(--main-text-color);
+    height: 5px;
+}

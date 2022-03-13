@@ -70,6 +70,7 @@
 /*phone*/
 
 html {
+    position: relative;
     font-size: 16px;
     font-family: 'Rowdies', cursive;
 }
@@ -85,6 +86,7 @@ html {
 
 @media only screen and (min-width: 1020px) {
     html {
+        position: relative;
         font-size: 18px;
         font-family: 'Rowdies', cursive;
     }
@@ -98,6 +100,7 @@ html {
 
 @media only screen and (min-width: 1600px) {
     html {
+        position: relative;
         font-size: 20px;
         font-family: 'Rowdies', cursive;
     }

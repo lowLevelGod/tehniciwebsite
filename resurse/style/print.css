@@ -1,14 +1,17 @@
 @media print {
     .banner {
         position: relative;
+        display: inline-flex;
+        width: 100%;
     }
     .banner h1 {
+        position: relative;
         font-size: 1.5rem;
-        position: absolute;
-        top: 0;
         right: 0;
-        border: 3px double black;
         width: 50%;
+        margin-left: auto;
+        text-align: center;
+        border: 3px double black;
     }
     img,
     video,
@@ -51,5 +54,44 @@
     }
     footer {
         page-break-before: always;
+    }
+   /* html{
+        min-height: 300vh;
+        position: relative;
+        margin: 0;
+    }
+    html:before{
+        content: "";
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: 
+          url('data:image/svg+xml;utf8,<svg style="transform:rotate(-45deg)" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 60"><text x="0" y="25" fill="%23000">Lorem </text></svg>') 
+          0 0/100% 100vh !important;
+    }*/
+    .printtitle {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    .printtitle h1 {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    @page :left{
+        size: auto;
+        margin-left: 2cm;
+        margin-right: 1cm;
+    }
+    @page :right{
+        size: auto;
+        margin-left: 1cm;
+        margin-right: 2cm;
     }
 }

@@ -279,3 +279,7 @@
 .foot>* {
     padding-right: 10px;
 }
+
+.printtitle {
+    display: none;
+}
