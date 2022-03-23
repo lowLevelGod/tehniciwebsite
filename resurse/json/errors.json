@@ -1,0 +1,23 @@
+{
+    "root": "resurse/pics/errors",
+    "errors": [{
+            "id": 404,
+            "title": "Error 404 !",
+            "text": "Somebody bring a crawler...",
+            "image": "brokenlink640.png"
+        },
+        {
+            "id": 403,
+            "title": "Error 403 !",
+            "text": "Segmentation fault...",
+            "image": "denied640.png"
+        },
+
+        {
+            "id": 1,
+            "title": "Error unkown !",
+            "text": "Right on the TO-DO list...",
+            "image": "denied640.png"
+        }
+    ]
+}

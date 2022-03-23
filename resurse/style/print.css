@@ -55,7 +55,7 @@
     footer {
         page-break-before: always;
     }
-   /* html{
+    /* html{
         min-height: 300vh;
         position: relative;
         margin: 0;
@@ -84,14 +84,31 @@
         padding: 0;
         border: 0;
     }
-    @page :left{
+    @page :left {
         size: auto;
         margin-left: 2cm;
         margin-right: 1cm;
     }
-    @page :right{
+    @page :right {
         size: auto;
         margin-left: 1cm;
         margin-right: 2cm;
+    }
+    .watermark {
+        display: block;
+        position: fixed;
+        bottom: 50%;
+        color: black;
+        right: 50%;
+    }
+    .watermark::after {
+        opacity: 0.4;
+        padding: 5px;
+        display: block;
+        background: white;
+        content: "Eftimie\aPetre";
+        white-space: pre;
+        line-height: 10 vh;
+        font-size: 60 vw;
     }
 }
