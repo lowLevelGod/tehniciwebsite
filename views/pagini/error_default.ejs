@@ -16,16 +16,20 @@
         <main>
             <div class="err-coloane">
                 <div class="err-imag">
-                    <img src="resurse/pics/errors/brokenlink640w.png" />
+                    <img src="<%- locals.image %>" />
                 </div>
                 <section>
-                    <h2>Eroare - eroare</h2>
-                    <p>Dap, asta este o eroare.</p>
+                    <h2>
+                        <%- locals.title %>
+                    </h2>
+                    <p>
+                        <%- locals.text %>
+                    </p>
                 </section>
             </div>
         </main>
 
-        <%- include("../fragmente/footer.ejs");  %>
+        <%- include("../../fragmente/footer.ejs");  %>
 
 
 </body>

@@ -1,0 +1,46 @@
+{
+    "cale_galerie": "resurse/pics/galerie",
+    "imagini": [{
+            "cale_imagine": "briose-frisca.png",
+            "titlu": "Briose",
+            "descriere": "Brioșe",
+            "sfert_ora": "1"
+        },
+        {
+            "cale_imagine": "clatite.png",
+            "titlu": "Clatite",
+            "descriere": "Clătite cu dulceață",
+            "sfert_ora": "2"
+        },
+        {
+            "cale_imagine": "gogosi.png",
+            "titlu": "Gogosi",
+            "descriere": "Gogoși glazurate",
+            "sfert_ora": "3"
+        },
+        {
+            "cale_imagine": "tort-scortisoara.png",
+            "titlu": "Tort scortisoara",
+            "descriere": "Tort cu scorțisoară",
+            "sfert_ora": "4"
+        },
+        {
+            "cale_imagine": "prajitura-ciocolata.png",
+            "titlu": "Prajitura ciocolata",
+            "descriere": "Prăjitură cu ciocolată",
+            "sfert_ora": "1"
+        },
+        {
+            "cale_imagine": "tarta-afine.png",
+            "titlu": "Tarta afine",
+            "descriere": "Tartă cu afine",
+            "sfert_ora": "2"
+        },
+        {
+            "cale_imagine": "tort-trandafiri.png",
+            "titlu": "Tort trandafiri",
+            "descriere": "Tort special",
+            "sfert_ora": "3"
+        }
+    ]
+}
