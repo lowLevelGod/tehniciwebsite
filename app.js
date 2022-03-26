@@ -14,7 +14,8 @@ console.log("Director proiect:", __dirname);
 
 app.get(["/", "/index", "/home"], function(req, res) {
     //res.sendFile(__dirname+"/index1.html");
-    res.render("pagini/index", { ip: req.ip, imagini: obImagini.imagini });
+    var quarter = Math.floor(new Date().getMinutes() / 15)
+    res.render("pagini/index", { ip: req.ip, imagini: obImagini.imagini, quarter: quarter });
 })
 
 app.get("/eroare", function(req, res) {
@@ -75,7 +76,7 @@ function creeazaImagini() {
 
     obImagini = JSON.parse(buf); //global
 
-    //console.log(obImagini);
+    console.log(obImagini);
     for (let imag of obImagini.imagini) {
         let nume_imag, extensie;
         [nume_imag, extensie] = imag.cale_imagine.split("."); // "abc.de".split(".") ---> ["abc","de"]
@@ -84,7 +85,7 @@ function creeazaImagini() {
         imag.mic = `${obImagini.cale_galerie}/mic/${nume_imag}-${dim_mic}.webp`; //nume-150.webp // "a10" b=10 "a"+b `a${b}`
         //console.log(imag.mic);
 
-        imag.mare = `${obImagini.cale_galerie}/${imag.fisier}`;
+        imag.mare = `${obImagini.cale_galerie}/${imag.cale_imagine}`;
         if (!fs.existsSync(imag.mic))
             sharp(__dirname + "/" + imag.mare)
             .resize(dim_mic)

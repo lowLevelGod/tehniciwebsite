@@ -41,6 +41,21 @@
             "titlu": "Tort trandafiri",
             "descriere": "Tort special",
             "sfert_ora": "3"
+        }, {
+            "cale_imagine": "scemer.png",
+            "titlu": "Scemer",
+            "descriere": "Scemer is cat",
+            "sfert_ora": "4"
+        }, {
+            "cale_imagine": "skittle.png",
+            "titlu": "Skittle",
+            "descriere": "Skittle is dog",
+            "sfert_ora": "1"
+        }, {
+            "cale_imagine": "hecker.png",
+            "titlu": "Hecker",
+            "descriere": "Hecker is lynx",
+            "sfert_ora": "2"
         }
     ]
 }

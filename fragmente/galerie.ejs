@@ -1,0 +1,21 @@
+<div class="galerie">
+    <% for (let [index, imag] of locals.imagini.entries()){ %>
+        <% if (index <= 9 && (locals.quarter + 1) == imag.sfert_ora)
+    { %>
+            <figure style="grid-area:<%-'f' + (index + 1).toString() %>" title="<%= imag.descriere %>">
+                <picture>
+                    <source srcset="<%- imag.mic %>" media="(max-width: 480px)" />
+                    <source srcset="<%- imag.mediu %>" media="(max-width: 1020px)" />
+                    <img src="<%- imag.mare %>" alt="<%- imag.titlu  %>" />
+                </picture>
+                <figcaption>
+                    <%- imag.titlu ? imag.titlu : "Software" %>
+                        <%- imag.autor ? ", de " +
+        imag.autor : "" %>
+                            <%- imag.license ? " sub licenta " + imag.license : ""
+        %>
+                </figcaption>
+            </figure>
+            <% } %>
+                <% } %>
+</div>
