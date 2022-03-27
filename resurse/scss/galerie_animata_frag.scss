@@ -1,0 +1,62 @@
+$clip_i:inset(0 50% 0 50%) !default;
+$clip_f:inset(0 0 0 0) !default;
+$setare-server: black !default;
+$nrimag: 10 !default;
+$timpafisare: 3 !default;
+.galerie-animata {
+    width: 400px;
+    height: 300px;
+    position: relative;
+}
+
+.galerie-animata figure {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    animation-name: gal_exemplu;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-duration: (3 * $nrimag)+s;
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes gal_exemplu {
+    0% {
+        z-index: ($nrimag + 1);
+        opacity: 1;
+    }
+    #{($timpafisare / 2 / ($nrimag * $timpafisare) * 100)}% {
+        clip-path: $clip_i;
+    }
+    #{($timpafisare / ($nrimag * $timpafisare) * 100)}% {
+        z-index: ($nrimag + 1);
+        //opacity: 0;
+        clip-path: $clip_f;
+    }
+    #{($timpafisare / ($nrimag * $timpafisare) * 100) + 0.001}% {
+        z-index: -($nrimag + 1);
+        clip-path: $clip_i;
+    }
+    #{100 - ($timpafisare / ($nrimag * $timpafisare) * 100)}% {
+        // opacity: 0;
+        z-index: -($nrimag + 1);
+        clip-path: $clip_i;
+    }
+    #{100 - ($timpafisare / ($nrimag * $timpafisare) * 100) + 0.001}% {
+        z-index: 0;
+    }
+    100% {
+        opacity: 1;
+        z-index: 0;
+    }
+}
+
+@for $i from $nrimag through 1 {
+    .galerie-animata figure:nth-of-type(#{$i}) {
+        animation-delay: (($nrimag - $i) * 3)+s;
+    }
+}

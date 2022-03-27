@@ -22,6 +22,20 @@ app.get("/eroare", function(req, res) {
     randeazaEroare(res, 1, "Titlu schimbat");
 });
 
+function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+app.get("/contact", function(req, res) {
+    const nrmaxImagini = 10
+    var randomNumber = getRandomArbitrary(0, nrmaxImagini);
+    while (randomNumber % 3 != 0) {
+        randomNumber = getRandomArbitrary(1, nrmaxImagini);
+    }
+    var randomOffset = getRandomArbitrary(0, nrmaxImagini - randomNumber - 1);
+    res.render("pagini/contact", { imagini: obImagini.imagini, offset: randomOffset, nrImagini: randomNumber });
+});
+
 app.get("/*.ejs", function(req, res) {
     //res.sendFile(__dirname+"/index1.html");
     //res.status(403).render("pagini/403");
