@@ -3,6 +3,11 @@ const fs = require('fs');
 const sharp = require('sharp');
 const { Client } = require('pg');
 const res = require('express/lib/response');
+const ejs = require('ejs');
+const sass = require('sass');
+
+/*var client= new Client({database:"bd_1522",user:"lab1522", password:"lab1522", host:"localhost", port:5432});
+client.connect();*/
 
 app = express();
 
@@ -22,11 +27,62 @@ app.get("/eroare", function(req, res) {
     randeazaEroare(res, 1, "Titlu schimbat");
 });
 
+app.get("*/galerie_animata_frag.css", function(req, res) {
+    /* TO DO
+    citim in sirScss continutul fisierului galerie_animata.scss
+    setam culoare aleatoare din vectorul culori=["navy","black","purple","grey"]
+    in variabila rezScss compilam codul ejs din sirScss
+    scriu rezScss in galerie-animata.scss din folderul temp 
+    compilez scss cu sourceMap:true
+    scriu rezultatul in "temp/galerie-animata.css"
+    setez headerul Content-Type
+    trimit fisierul css
+    */
+    var sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata_frag.scss").toString("utf8");
+    var culori = ["navy", "black", "purple", "grey"];
+    var indiceAleator = Math.floor(Math.random() * culori.length);
+    var culoareAleatoare = culori[indiceAleator];
+    rezScss = ejs.render(sirScss, { culoare: culoareAleatoare });
+    console.log(rezScss);
+    var caleScss = __dirname + "/temp/galerie_animata_frag.scss"
+    fs.writeFileSync(caleScss, rezScss);
+    try {
+        rezCompilare = sass.compile(caleScss, { sourceMap: true });
+
+        var caleCss = __dirname + "/temp/galerie_animata_frag.css";
+        fs.writeFileSync(caleCss, rezCompilare.css);
+        res.setHeader("Content-Type", "text/css");
+        res.sendFile(caleCss);
+    } catch (err) {
+        console.log(err);
+        res.send("Eroare");
+    }
+});
+
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
 app.get("/contact", function(req, res) {
+    var sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata_frag.scss").toString("utf8");
+    var culori = ["navy", "black", "purple", "grey"];
+    var indiceAleator = Math.floor(Math.random() * culori.length);
+    var culoareAleatoare = culori[indiceAleator];
+    rezScss = ejs.render(sirScss, { culoare: culoareAleatoare });
+    console.log(rezScss);
+    var caleScss = __dirname + "/temp/galerie_animata_frag.scss"
+    fs.writeFileSync(caleScss, rezScss);
+    try {
+        rezCompilare = sass.compile(caleScss, { sourceMap: true });
+
+        var caleCss = __dirname + "/resurse/style/galerie_animata_frag.css";
+        fs.writeFileSync(caleCss, rezCompilare.css);
+        res.setHeader("Content-Type", "text/css");
+        res.sendFile(caleCss);
+    } catch (err) {
+        console.log(err);
+        res.send("Eroare");
+    }
     const nrmaxImagini = 10
     var randomNumber = getRandomArbitrary(0, nrmaxImagini);
     while (randomNumber % 3 != 0) {
@@ -90,7 +146,7 @@ function creeazaImagini() {
 
     obImagini = JSON.parse(buf); //global
 
-    console.log(obImagini);
+    //console.log(obImagini);
     for (let imag of obImagini.imagini) {
         let nume_imag, extensie;
         [nume_imag, extensie] = imag.cale_imagine.split("."); // "abc.de".split(".") ---> ["abc","de"]
