@@ -1,4 +1,4 @@
-$clip_i:inset(0 50% 0 50%) !default;
+$clip_i:inset(50% 0, 50% 0, 50% 100%, 100% 100%, 100% 0, 0 0, 0 100%, 50% 100%) !default;
 $clip_f:inset(0 0 0 0) !default;
 $setare-server: black !default;
 $nrimag: 10 !default;
@@ -10,6 +10,10 @@ $timpafisare: 3 !default;
 }
 
 .galerie-animata figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 0;
     top: 0;
@@ -24,6 +28,17 @@ $timpafisare: 3 !default;
     }
 }
 
+.galerie-animata figcaption {
+    position: absolute;
+    bottom: 5px;
+    color: aqua;
+}
+
+.galerie-animata img {
+    display: inline-block;
+    width: 100%;
+}
+
 @keyframes gal_exemplu {
     0% {
         z-index: ($nrimag + 1);
@@ -32,9 +47,12 @@ $timpafisare: 3 !default;
     #{($timpafisare / 2 / ($nrimag * $timpafisare) * 100)}% {
         clip-path: $clip_i;
     }
+    9% {
+        opacity: 1;
+    }
     #{($timpafisare / ($nrimag * $timpafisare) * 100)}% {
         z-index: ($nrimag + 1);
-        //opacity: 0;
+        opacity: 0;
         clip-path: $clip_f;
     }
     #{($timpafisare / ($nrimag * $timpafisare) * 100) + 0.001}% {
@@ -42,7 +60,7 @@ $timpafisare: 3 !default;
         clip-path: $clip_i;
     }
     #{100 - ($timpafisare / ($nrimag * $timpafisare) * 100)}% {
-        // opacity: 0;
+        opacity: 0;
         z-index: -($nrimag + 1);
         clip-path: $clip_i;
     }
