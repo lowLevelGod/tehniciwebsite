@@ -3,6 +3,9 @@
   height: 300px;
   position: relative;
 }
+.galerie-animata:hover figure {
+  animation-play-state: paused;
+}
 
 .galerie-animata figure {
   display: flex;
@@ -18,15 +21,17 @@
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
   animation-duration: 30s;
-}
-.galerie-animata figure:hover {
-  animation-play-state: paused;
+  border: 10px solid;
+  border-image: url("../pics/Software480w.png") 10% round;
 }
 
 .galerie-animata figcaption {
   position: absolute;
-  bottom: 5px;
-  color: aqua;
+  bottom: 0px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  text-align: center;
 }
 
 .galerie-animata img {
@@ -40,24 +45,24 @@
     opacity: 1;
   }
   5% {
-    clip-path: inset(50% 0, 50% 0, 50% 100%, 100% 100%, 100% 0, 0 0, 0 100%, 50% 100%);
+    clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
   }
-  9% {
+  9.375% {
     opacity: 1;
   }
   10% {
     z-index: 11;
     opacity: 0;
-    clip-path: inset(0 0 0 0);
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 0, 0% 0, 0% 100%, 0 100%, 0 0);
   }
   10.001% {
     z-index: -11;
-    clip-path: inset(50% 0, 50% 0, 50% 100%, 100% 100%, 100% 0, 0 0, 0 100%, 50% 100%);
+    clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
   }
   90% {
     opacity: 0;
     z-index: -11;
-    clip-path: inset(50% 0, 50% 0, 50% 100%, 100% 100%, 100% 0, 0 0, 0 100%, 50% 100%);
+    clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
   }
   90.001% {
     z-index: 0;

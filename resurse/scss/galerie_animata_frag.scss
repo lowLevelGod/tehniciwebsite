@@ -1,5 +1,5 @@
-$clip_i:inset(50% 0, 50% 0, 50% 100%, 100% 100%, 100% 0, 0 0, 0 100%, 50% 100%) !default;
-$clip_f:inset(0 0 0 0) !default;
+$clip_i: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
+$clip_f: polygon(100% 0, 100% 100%, 100% 100%, 100% 0, 0% 0, 0% 100%, 0 100%, 0 0);
 $setare-server: black !default;
 $nrimag: 10 !default;
 $timpafisare: 3 !default;
@@ -7,6 +7,9 @@ $timpafisare: 3 !default;
     width: 400px;
     height: 300px;
     position: relative;
+    &:hover figure {
+        animation-play-state: paused;
+    }
 }
 
 .galerie-animata figure {
@@ -23,15 +26,17 @@ $timpafisare: 3 !default;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-duration: (3 * $nrimag)+s;
-    &:hover {
-        animation-play-state: paused;
-    }
+    border:10px solid;
+    border-image: url('../pics/Software480w.png') 10% round;
 }
 
 .galerie-animata figcaption {
     position: absolute;
-    bottom: 5px;
-    color: aqua;
+    bottom: 0px;
+    color: black;
+    background-color: rgba(255,255,255, 0.5);
+    width: 100%;
+    text-align: center;
 }
 
 .galerie-animata img {
@@ -47,7 +52,7 @@ $timpafisare: 3 !default;
     #{($timpafisare / 2 / ($nrimag * $timpafisare) * 100)}% {
         clip-path: $clip_i;
     }
-    9% {
+    #{(($timpafisare / 2 / ($nrimag * $timpafisare) * 100) + ($timpafisare / ($nrimag * $timpafisare) * 100)) / 1.6}% {
         opacity: 1;
     }
     #{($timpafisare / ($nrimag * $timpafisare) * 100)}% {

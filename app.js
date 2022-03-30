@@ -6,8 +6,8 @@ const res = require('express/lib/response');
 const ejs = require('ejs');
 const sass = require('sass');
 
-var client = new Client({ database: "dbfortw", user: "pedro", password: "1234", host: "localhost", port: 5432 });
-client.connect();
+/*var client = new Client({ database: "dbfortw", user: "pedro", password: "1234", host: "localhost", port: 5432 });
+client.connect();*/
 
 app = express();
 
