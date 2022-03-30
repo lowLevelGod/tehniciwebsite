@@ -1,6 +1,6 @@
 <div class="galerie-animata">
     <% for (let [index, imag] of locals.imagini.entries()){ %>
-        <% if (index <= 9)
+        <% if (index <= 9 && index >= locals.offset && index < locals.offset + locals.nrImagini)
         { %>
             <figure title="<%= imag.descriere %>">
                 <picture>

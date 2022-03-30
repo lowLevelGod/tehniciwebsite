@@ -1,0 +1,88 @@
+$nrimag: 10 !default;
+@media only screen and (max-width:1600px) {
+    .galerie-animata {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:1600px) {
+    $clip_i: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
+    $clip_f: polygon(100% 0, 100% 100%, 100% 100%, 100% 0, 0% 0, 0% 100%, 0 100%, 0 0);
+    $setare-server: black !default;
+    $timpafisare: 3 !default;
+    .galerie-animata {
+        width: 400px;
+        height: 300px;
+        position: relative;
+        &:hover figure {
+            animation-play-state: paused;
+        }
+    }
+    .galerie-animata figure {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        animation-name: gal_exemplu;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+        animation-duration: (3 * $nrimag)+s;
+        border: 10px solid;
+        border-image: url('../pics/Software480w.png') 10% round;
+    }
+    .galerie-animata figcaption {
+        position: absolute;
+        bottom: 0px;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        text-align: center;
+    }
+    .galerie-animata img {
+        display: inline-block;
+        width: 100%;
+    }
+    @keyframes gal_exemplu {
+        0% {
+            z-index: ($nrimag + 1);
+            opacity: 1;
+        }
+        #{($timpafisare / 2 / ($nrimag * $timpafisare) * 100)}% {
+            clip-path: $clip_i;
+        }
+        #{(($timpafisare / 2 / ($nrimag * $timpafisare) * 100) + ($timpafisare / ($nrimag * $timpafisare) * 100)) / 1.6}% {
+            opacity: 1;
+        }
+        #{($timpafisare / ($nrimag * $timpafisare) * 100)}% {
+            z-index: ($nrimag + 1);
+            opacity: 0;
+            clip-path: $clip_f;
+        }
+        #{($timpafisare / ($nrimag * $timpafisare) * 100) + 0.001}% {
+            z-index: -($nrimag + 1);
+            clip-path: $clip_i;
+        }
+        #{100 - ($timpafisare / ($nrimag * $timpafisare) * 100)}% {
+            opacity: 0;
+            z-index: -($nrimag + 1);
+            clip-path: $clip_i;
+        }
+        #{100 - ($timpafisare / ($nrimag * $timpafisare) * 100) + 0.001}% {
+            z-index: 0;
+        }
+        100% {
+            opacity: 1;
+            z-index: 0;
+        }
+    }
+    @for $i from $nrimag through 1 {
+        .galerie-animata figure:nth-of-type(#{$i}) {
+            animation-delay: (($nrimag - $i) * 3)+s;
+        }
+    }
+}

@@ -40,29 +40,26 @@ function getRandomArbitrary(min, max) {
 }
 
 app.get("/contact", function(req, res) {
-    var sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata_frag.scss").toString("utf8");
-    var culori = ["navy", "black", "purple", "grey"];
-    var indiceAleator = Math.floor(Math.random() * culori.length);
-    var culoareAleatoare = culori[indiceAleator];
-    rezScss = ejs.render(sirScss, { culoare: culoareAleatoare });
-    console.log(rezScss);
-    var caleScss = __dirname + "/resurse/scss/galerie_animata_frag.scss"
-    fs.writeFileSync(caleScss, rezScss);
-    try {
-        rezCompilare = sass.compile(caleScss, { sourceMap: true });
-
-        var caleCss = __dirname + "/resurse/style/galerie_animata_frag.css";
-        fs.writeFileSync(caleCss, rezCompilare.css);
-    } catch (err) {
-        console.log(err);
-        res.send("Eroare");
-    }
+    var sirScss = fs.readFileSync(__dirname + "/resurse/scss/galerie_animata.scss").toString("utf8");
     const nrmaxImagini = 10
     var randomNumber = getRandomArbitrary(0, nrmaxImagini);
     while (randomNumber % 3 != 0) {
         randomNumber = getRandomArbitrary(1, nrmaxImagini);
     }
     var randomOffset = getRandomArbitrary(0, nrmaxImagini - randomNumber - 1);
+    rezScss = ejs.render(sirScss, { nrimag: randomNumber });
+    console.log(rezScss);
+    var caleScss = __dirname + "/temp/galerie_animata.scss"
+    fs.writeFileSync(caleScss, rezScss);
+    try {
+        rezCompilare = sass.compile(caleScss, { sourceMap: true });
+
+        var caleCss = __dirname + "/resurse/style/galerie_animata.css";
+        fs.writeFileSync(caleCss, rezCompilare.css);
+    } catch (err) {
+        console.log(err);
+        res.send("Eroare");
+    }
     res.render("pagini/contact", { imagini: obImagini.imagini, offset: randomOffset, nrImagini: randomNumber });
 });
 
