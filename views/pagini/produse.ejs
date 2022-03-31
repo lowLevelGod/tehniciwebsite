@@ -12,19 +12,18 @@
     <%- include("../../fragmente/header.ejs") %>
         <main>
             <section id="produse">
-                <h2>Produse</h2>
+                <h2>Products</h2>
                 <div class="grid-produse">
                     <% for( let prod of locals.produse) { %>
                         <article class="produs">
-                            <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
+                            <h3 class="nume">Name: <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
                             <div class="info-prod">
-                                <p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
-                                <p class="calorii">Calorii: <span class="val-calorii"><%- prod.calorii%></span></p>
-                                <p class="gramaj">Gramaj: <span class="val-gramaj"><%- prod.gramaj%></span></p>
+                                <p class="pret">Price: <span class="val-pret"><%- prod.pret%></span></p>
+                                <p class="storage_size">Storage size(MB): <span class="val-storage_size"><%- prod.storage_size%></span></p>
                             </div>
-                            <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
+                            <p class="categorie_mare">Category:<span class="val-categorie_mare"><%- prod.categorie_mare%></span></p>
                             <figure>
-                                <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]" /></a>
+                                <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[image <%- prod.nume %>]" /></a>
                             </figure>
                             <label class="selecteaza-cos">
                             Selectează:<br/>

@@ -21,6 +21,7 @@ app.get(["/", "/index", "/home"], function(req, res) {
     //res.sendFile(__dirname+"/index1.html");
     var quarter = Math.floor(new Date().getMinutes() / 15)
     res.render("pagini/index", { ip: req.ip, imagini: obImagini.imagini, quarter: quarter });
+
 })
 
 app.get("/produse", function(req, res) {
@@ -29,6 +30,12 @@ app.get("/produse", function(req, res) {
         res.render("pagini/produse", { produse: rezQuery.rows });
     })
 })
+
+app.get("/produs/:id", function(req, res) {
+    client.query(`select * from produse where id=${req.params.id}`, function(err, rezQuery) {
+        res.render("pagini/produs", { prod: rezQuery.rows[0] });
+    });
+});
 
 app.get("/eroare", function(req, res) {
     randeazaEroare(res, 1, "Titlu schimbat");

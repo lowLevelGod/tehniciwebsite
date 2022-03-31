@@ -12,17 +12,16 @@
     <%- include("../../fragmente/header.ejs") %>
         <main>
             <section>
-                <h2>Pagină produs</h2>
+                <h2>Product page</h2>
                 <article id="art-produs">
                     <h3><span class="nume"><%- locals.prod.nume %></span></h3>
                     <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
                     <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
-                    <p>Ingrediente: <span class="ingrediente"><%- locals.prod.ingrediente %> </span></p>
-                    <p>Calorii: <span class="calorii"><%- locals.prod.calorii %> </span></p>
-                    <p>Gramaj: <span class="gramaj"><%- locals.prod.gramaj %> </span></p>
-                    <p>Categorie: <span class="categorie"><%- locals.prod.categorie %> </span></p>
-                    <p>Pentru diabetici: <span class="pt_diabetici"><%- locals.prod.pt_diabetici %> </span></p>
-                    <p>Data adăugare: <span class="categorie"><%- locals.prod.data_adaugare %> </span></p>
+                    <p>Platforms: <span class="platforms"><%- locals.prod.platforms %> </span></p>
+                    <p>Storage size(MB): <span class="storage_size"><%- locals.prod.storage_size %> </span></p>
+                    <p>Category: <span class="categorie_mare"><%- locals.prod.categorie_mare %> </span></p>
+                    <p>Continued support: <span class="continued_support"><%- locals.prod.continued_support %> </span></p>
+                    <p>Last update: <span class="last_update"><%- locals.prod.last_update %> </span></p>
                     <figure class="imag-produs">
                         <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
                     </figure>
