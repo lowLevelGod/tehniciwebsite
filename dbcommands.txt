@@ -6,7 +6,7 @@ DROP TYPE IF EXISTS categorie_mare;
 DROP TYPE IF EXISTS categorie_mica;
 
 CREATE TYPE categorie_mica AS ENUM('open source', 'closed source');
-CREATE TYPE categorie_mare AS ENUM('Video player', 'Text editor', 'Music player', 'Browser', 'File archiver');
+CREATE TYPE categorie_mare AS ENUM('Video_player', 'Text_editor', 'Music_player', 'Browser', 'File_archiver');
 
 
 CREATE TABLE IF NOT EXISTS produse (
@@ -24,32 +24,32 @@ CREATE TABLE IF NOT EXISTS produse (
 );
 
 INSERT into produse (nume,descriere,pret, storage_size, categorie_mare, categorie_mica, platforms, continued_support, imagine) VALUES 
-('Zimtex', 'text editor', 10.9 , 200,'Text editor', 'open source', '{"android","ios"}', True, 'text-editor.jpg'),
+('Zimtex', 'text editor', 10.9 , 200,'Text_editor', 'open source', '{"android","ios"}', True, 'text-editor.jpg'),
 
-('Apachestone', 'video player', 10.9 , 500,'Video player', 'open source', '{"android","ios"}', True, 'video-player.jpg'),
+('Apachestone', 'video player', 10.9 , 500,'Video_player', 'open source', '{"android","ios"}', True, 'video-player.jpg'),
 
-('Peachworks', 'music player', 10.9 , 500,'Music player', 'open source', '{"android","ios"}', True,'music-player.jpg'),
+('Peachworks', 'music player', 10.9 , 500,'Music_player', 'open source', '{"android","ios"}', True,'music-player.jpg'),
 
 ('Canlux', 'Browser', 10.9 , 500,'Browser', 'open source', '{"android","ios", "windows"}', True,'browser.jpg'),
 
-('Indidexon', 'text editor', 10.9 , 500,'Text editor', 'open source', '{"android","ios", "windows"}', True,'text-editor.jpg'),
+('Indidexon', 'text editor', 10.9 , 500,'Text_editor', 'open source', '{"android","ios", "windows"}', True,'text-editor.jpg'),
 
 ('Granitelight', 'Browser', 24.9 , 500,'Browser', 'open source', '{"macos"}', False, 'browser.jpg'),
 
-('Vineshow', 'video player', 24.9 , 700,'Video player', 'open source', '{"macos"}', False, 'video-player.jpg'),
+('Vineshow', 'video player', 24.9 , 700,'Video_player', 'open source', '{"macos"}', False, 'video-player.jpg'),
 
-('Globaltube', 'text editor', 24.9 , 700,'Text editor', 'open source', '{"macos"}', False, 'text-editor.jpg'),
+('Globaltube', 'text editor', 24.9 , 700,'Text_editor', 'open source', '{"macos"}', False, 'text-editor.jpg'),
 
 ('Zamzamcore', 'Browser', 24.9 , 700,'Browser', 'closed source', '{"macos", "windows", "linux"}', True, 'browser.jpg'),
 
-('Driftcast', 'music player', 24.9 , 700,'Music player', 'closed source', '{"macos", "windows", "linux"}', True, 'music-player.jpg'),
+('Driftcast', 'music player', 24.9 , 700,'Music_player', 'closed source', '{"macos", "windows", "linux"}', True, 'music-player.jpg'),
 
-('Angeldale', 'text editor', 24.9 , 700,'Text editor', 'closed source', '{"macos", "windows", "linux"}', False, 'text-editor.jpg'),
+('Angeldale', 'text editor', 24.9 , 700,'Text_editor', 'closed source', '{"macos", "windows", "linux"}', False, 'text-editor.jpg'),
 
-('Shadowworks', 'video player', 50.9 , 950,'Video player', 'closed source', '{"macos", "windows", "linux"}', True, 'video-player.jpg'),
+('Shadowworks', 'video player', 50.9 , 950,'Video_player', 'closed source', '{"macos", "windows", "linux"}', True, 'video-player.jpg'),
 
-('Boaraid', 'File archiver', 50.9 , 950,'File archiver', 'closed source', '{"android", "linux"}', False, 'file-archiver.jpg'),
+('Boaraid', 'File_archiver', 50.9 , 950,'File_archiver', 'closed source', '{"android", "linux"}', False, 'file-archiver.jpg'),
 
-('Voidshade', 'text editor', 50.9 , 950,'Text editor', 'closed source', '{"android", "linux"}', True, 'text-editor.jpg'),
+('Voidshade', 'text editor', 50.9 , 950,'Text_editor', 'closed source', '{"android", "linux"}', True, 'text-editor.jpg'),
 
-('Alphacon', 'File archiver', 50.9, 950,'File archiver', 'closed source', '{"android", "linux"}', True, 'file-archiver.jpg')
+('Alphacon', 'File_archiver', 50.9, 950,'File_archiver', 'closed source', '{"android", "linux"}', True, 'file-archiver.jpg')

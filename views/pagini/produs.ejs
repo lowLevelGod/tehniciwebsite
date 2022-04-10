@@ -13,18 +13,26 @@
         <main>
             <section>
                 <h2>Product page</h2>
-                <article id="art-produs">
-                    <h3><span class="nume"><%- locals.prod.nume %></span></h3>
-                    <p>Pret: <span class="pret"><%- locals.prod.pret %> </span></p>
-                    <p>Descriere: <span class="descriere"><%- locals.prod.descriere %> </span></p>
-                    <p>Platforms: <span class="platforms"><%- locals.prod.platforms %> </span></p>
-                    <p>Storage size(MB): <span class="storage_size"><%- locals.prod.storage_size %> </span></p>
-                    <p>Category: <span class="categorie_mare"><%- locals.prod.categorie_mare %> </span></p>
-                    <p>Continued support: <span class="continued_support"><%- locals.prod.continued_support %> </span></p>
-                    <p>Last update: <span class="last_update"><%- locals.prod.last_update %> </span></p>
-                    <figure class="imag-produs">
-                        <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
-                    </figure>
+                <article id="artc-<%- locals.prod.id %>" class="<%- locals.prod.categorie_mare %>">
+                    <div class="art1">
+                        <h3><span class="nume"><%- locals.prod.nume %></span></h3>
+                        <p><span class="caracteristica">Price: </span> <span class="pret"><%- locals.prod.pret %> </span></p>
+                        <p><span class="caracteristica">Platforms:</span> <span class="platforms"><%- locals.prod.platforms %> </span></p>
+                        <p><span class="caracteristica">Storage size(MB):</span> <span class="storage_size"><%- locals.prod.storage_size %> </span></p>
+                        <p><span class="caracteristica">Continued support:</span> <span class="continued_support"><%- locals.prod.continued_support %> </span></p>
+                        <p><span class="caracteristica">Last update:</span> <time class="last_update"><%- locals.prod.last_update %> </time></p>
+                        <figure class="imag-produs">
+                            <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
+                        </figure>
+                    </div>
+                    <div class="art2">
+                        <div>
+                            <%- locals.prod.categorie_mare %>
+                        </div>
+                        <div>
+                            <%- locals.prod.descriere %>
+                        </div>
+                    </div>
                 </article>
 
             </section>

@@ -1,0 +1,114 @@
+#artc-1 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-2 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-3 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-4 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-5 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-6 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-7 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-8 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-9 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-10 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-11 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-12 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-13 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-14 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+#artc-15 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "art1 art2";
+}
+
+.art1 .caracteristica {
+  font-weight: bold;
+  color: var(--h-color);
+}
+
+.art2 .caracteristica {
+  font-weight: bold;
+  color: var(--h-color);
+}

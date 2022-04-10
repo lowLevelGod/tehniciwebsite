@@ -1,0 +1,21 @@
+$nrproducts: 15 !default;
+@for $i from 1 through $nrproducts {
+    #artc-#{$i} {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "art1 art2";
+    }
+}
+
+.art1 {}
+
+.art1 .caracteristica {
+    font-weight: bold;
+    color: var(--h-color);
+}
+
+.art2 .caracteristica {
+    font-weight: bold;
+    color: var(--h-color);
+}

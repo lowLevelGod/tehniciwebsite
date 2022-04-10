@@ -1,55 +1,60 @@
 window.addEventListener("DOMContentLoaded", function() {
 
+    var slider = document.getElementById("priceRange");
+    var output = document.getElementById("inp-price");
 
-    var btn = document.getElementById("filtrare");
+    let updatePrice = () => output.innerHTML = slider.value;
+
+    slider.addEventListener('input', updatePrice);
+
+
+    var btn = document.getElementById("filter");
     btn.onclick = function() {
-        var articole = document.getElementsByClassName("produs");
-        for (let art of articole) {
+        var articles = document.getElementsByClassName("produs");
+        for (let prod of articles) {
+            prod.style.display = "none";
+            var description = prod.getElementsByClassName("val-description")[0].innerHTML;
+            var keyword = document.getElementById("inp-keyword").value;
+            var cond1 = description.includes(keyword);
 
-            art.style.display = "none";
+            var inpPrice = parseInt(document.getElementById("inp-price").innerHTML);
+            var price = parseInt(prod.getElementsByClassName("val-price")[0].innerHTML);
+            var cond2 = price >= inpPrice ? true : false;
 
-            /*
-            v=art.getElementsByClassName("nume")
-            nume=v[0]*/
-            var nume = art.getElementsByClassName("val-nume")[0]; //<span class="val-nume">aa</span>
-            console.log(nume.innerHTML)
-            var conditie1 = nume.innerHTML.startsWith(document.getElementById("inp-nume").value)
+            var productChoice = document.getElementById("product-choice").value;
+            var productName = prod.getElementsByClassName("val-name")[0].innerHTML;
+            var cond3 = productName.includes(productChoice);
 
-            var pret = art.getElementsByClassName("val-pret")[0]
-            var conditie2 = parseInt(pret.innerHTML) > parseInt(document.getElementById("inp-pret").value);
-
-            var radbtns = document.getElementsByName("gr_rad");
+            var storageSize = parseInt(prod.getElementsByClassName("val-storage_size")[0].innerHTML);
+            var radbtns = document.getElementsByName("szrad");
             for (let rad of radbtns) {
                 if (rad.checked) {
-                    var valCalorii = rad.value; //poate fi 1, 2 sau 3
+                    var valSize = rad.value;
                     break;
                 }
             }
 
-            var caloriiArt = parseInt(art.getElementsByClassName("val-calorii")[0].innerHTML);
-            var conditie3 = false;
-            switch (valCalorii) {
+            var cond4 = false;
+            switch (valSize) {
                 case "1":
-                    conditie3 = (caloriiArt < 350);
+                    cond4 = (storageSize <= 200);
                     break;
                 case "2":
-                    conditie3 = (caloriiArt >= 350 && caloriiArt < 700);
+                    cond4 = (200 < storageSize && storageSize <= 500);
                     break;
                 case "3":
-                    conditie3 = (caloriiArt >= 700);
+                    cond4 = (500 < storageSize && storageSize <= 950);
                     break;
                 default:
-                    conditie3 = true;
-
+                    cond4 = true;
+                    break;
             }
-            console.log(conditie3);
 
-            var selCateg = document.getElementById("inp-categorie");
-            var conditie4 = (art.getElementsByClassName("val-categorie")[0].innerHTML == selCateg.value || selCateg.value == "toate");
+            console.log(cond4);
 
-
-            if (conditie1 && conditie2 && conditie3 && conditie4)
-                art.style.display = "block";
+            if (cond1 && cond2 && cond3 && cond4) {
+                prod.style.display = "grid";
+            }
 
         }
     }

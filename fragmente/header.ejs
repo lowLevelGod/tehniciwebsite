@@ -6,6 +6,7 @@
     <nav>
         <div class="printtitle">
             <h1>Software License Shop</h1>
+            <%-locals.prop%>
         </div>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="hamlabel" for="menu-btn">
@@ -48,6 +49,12 @@
             </li>
             <li class="dropdown">
                 <button class="dropbtn"><a href="/produse">Produse</a></button>
+                <div class="dropdown-content">
+                    <% for (let categ of locals.categ) { %>
+                        <a href="/produse?tip=<%-categ.unnest%>">
+                            <%- categ.unnest %>
+                        </a>
+                        <%}%>
                 </div>
             </li>
         </ul>

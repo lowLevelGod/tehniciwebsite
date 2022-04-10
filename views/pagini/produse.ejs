@@ -6,25 +6,62 @@
     <title>Feedback</title>
     <%- include("../../fragmente/head.ejs") %>
         <script type="text/javascript" src=/resurse/js/produse.js></script>
+        <link rel="stylesheet" href="/resurse/style/produs.css">
 </head>
 
 <body>
     <%- include("../../fragmente/header.ejs") %>
         <main>
+            <label>Key word : <input type="text" id="inp-keyword"></label>
+            <label> Min price: <%-locals.max_price%> <input type="range" id="priceRange" value="0" min="<%-locals.max_price%>"  max="<%-locals.min_price%>"> <%-locals.min_price%>(<span id="inp-price"><%-locals.max_price%></span>)</label>
+            <label for="product-names">Name:</label>
+            <input list="product-names" id="product-choice" name="product-choice" />
+            <datalist id="product-names">
+                <% for( let prod of locals.produse) { %>
+                    <option value="<%-prod.nume%>">
+                    <% }%>
+            </datalist>
+            <p>Select storage size:</p>
+
+            <div>
+                <input type="radio" name="szrad" value="1">
+                <label>MB <= 200</label>
+            </div>
+
+            <div>
+                <input type="radio" name="szrad" value="2">
+                <label>200 < MB <= 500</label>
+            </div>
+
+            <div>
+                <input type="radio" name="szrad" value="3">
+                <label>500 < MB <= 950</label>
+            </div>
+            <div>
+                <input type="radio" name="szrad" value="4" checked>
+                <label>Any</label>
+            </div>
+            <button id="filter">Filter</button>
             <section id="produse">
                 <h2>Products</h2>
                 <div class="grid-produse">
                     <% for( let prod of locals.produse) { %>
-                        <article class="produs">
-                            <h3 class="nume">Name: <a href="/produs/<%-prod.id %>"><span class="val-nume"><%- prod.nume%></span></a></h3>
-                            <div class="info-prod">
-                                <p class="pret">Price: <span class="val-pret"><%- prod.pret%></span></p>
-                                <p class="storage_size">Storage size(MB): <span class="val-storage_size"><%- prod.storage_size%></span></p>
+                        <article id="artc-<%-prod.id%>" class="produs <%- prod.categorie_mare %>">
+                            <div class="art1">
+                                <h3 class="nume"><span class="caracteristica">Name : </span><a href="/produs/<%-prod.id %>"><span class="val-name"><%- prod.nume%></span></a>
+                                </h3>
+                                <div class="info-prod">
+                                    <p class="pret"><span class="caracteristica">Price: </span><span class="val-price"><%- prod.pret%></span></p>
+                                    <p class="storage_size"><span class="caracteristica">Storage size(MB): </span><span class="val-storage_size"><%- prod.storage_size%></span></p>
+                                </div>
                             </div>
-                            <p class="categorie_mare">Category:<span class="val-categorie_mare"><%- prod.categorie_mare%></span></p>
-                            <figure>
+                            <div class="art2">
+                                <p class="categorie_mare"><span class="caracteristica">Category: </span><span class="val-categorie_mare"><%- prod.categorie_mare%></span></p>
+                                <p class="descriere"><span class="caracteristica">Description: </span><span class="val-description"><%- prod.descriere%></span></p>
+                                <!-- <figure>
                                 <a href="/produs/<%-prod.id %>"><img src="/resurse/imagini/produse/<%- prod.imagine %>" style="width:50%;height:auto;" alt="[image <%- prod.nume %>]" /></a>
-                            </figure>
+                            </figure>-->
+                            </div>
                             <label class="selecteaza-cos">
                             Selectează:<br/>
                             <input type="checkbox" class="select-cos" value="<%-prod.id %>" autocomplete="off">

@@ -15,6 +15,42 @@ app.set("view engine", "ejs");
 
 app.use("/resurse", express.static(__dirname + "/resurse"))
 
+app.use("/*", function(req, res, next) {
+    client.query("select max(pret) from produse union select min(pret) from produse", function(err, rezRows) {
+        res.locals.max_price = rezRows.rows[0].max;
+        res.locals.min_price = rezRows.rows[1].max;
+        next();
+    });
+});
+
+app.use("/*", function(req, res, next) {
+    client.query("select count(*) from produse", function(err, noRows) {
+        var sirScss = fs.readFileSync(__dirname + "/resurse/scss/produs.scss").toString("utf8");
+        rezScss = ejs.render(sirScss, { nrproducts: noRows.rows[0].count });
+        console.log(rezScss);
+        var caleScss = __dirname + "/temp/produs.scss"
+        fs.writeFileSync(caleScss, rezScss);
+        try {
+            rezCompilare = sass.compile(caleScss, { sourceMap: true });
+
+            var caleCss = __dirname + "/resurse/style/produs.css";
+            fs.writeFileSync(caleCss, rezCompilare.css);
+        } catch (err) {
+            console.log(err);
+            res.send("Eroare");
+        }
+        next();
+    });
+});
+
+app.use("/*", function(req, res, next) {
+    client.query("select * from unnest(enum_range(null::categorie_mare))", function(err, rezCateg) {
+        res.locals.categ = rezCateg.rows;
+        next();
+    });
+});
+
+
 console.log("Director proiect:", __dirname);
 
 app.get(["/", "/index", "/home"], function(req, res) {
@@ -25,10 +61,11 @@ app.get(["/", "/index", "/home"], function(req, res) {
 })
 
 app.get("/produse", function(req, res) {
-    client.query("select * from produse", function(err, rezQuery) {
-        console.log(rezQuery);
+    var condWhere = req.query.tip ? `categorie_mare='${req.query.tip}'` : "1=1";
+    console.log(condWhere);
+    client.query("select * from produse where " + condWhere, function(err, rezQuery) {
         res.render("pagini/produse", { produse: rezQuery.rows });
-    })
+    });
 })
 
 app.get("/produs/:id", function(req, res) {
