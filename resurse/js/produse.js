@@ -21,8 +21,8 @@ window.addEventListener("DOMContentLoaded", function() {
             var price = parseInt(prod.getElementsByClassName("val-price")[0].innerHTML);
             var cond2 = price >= inpPrice ? true : false;
 
-            var productChoice = document.getElementById("product-choice").value;
-            var productName = prod.getElementsByClassName("val-name")[0].innerHTML;
+            var productChoice = document.getElementById("product-choice").value.toLowerCase();
+            var productName = prod.getElementsByClassName("val-name")[0].innerHTML.toLowerCase();
             var cond3 = productName.includes(productChoice);
 
             var storageSize = parseInt(prod.getElementsByClassName("val-storage_size")[0].innerHTML);
@@ -50,9 +50,16 @@ window.addEventListener("DOMContentLoaded", function() {
                     break;
             }
 
-            console.log(cond4);
+            var noutatiDate = Date.parse(document.getElementsByClassName("val-noutati")[0].innerHTML);
+            var prodDate = Date.parse(prod.getElementsByClassName("last_update")[0].innerHTML);
+            var cond5 = (prodDate > noutatiDate);
+            if (!document.getElementById("noutati").checked)
+                cond5 = true;
 
-            if (cond1 && cond2 && cond3 && cond4) {
+            var textareaName = document.getElementById("textarea-name").value.toLowerCase();
+            var cond6 = productName.startsWith(textareaName);
+
+            if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6) {
                 prod.style.display = "grid";
             }
 

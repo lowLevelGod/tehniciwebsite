@@ -41,6 +41,14 @@
                 <input type="radio" name="szrad" value="4" checked>
                 <label>Any</label>
             </div>
+            <div>
+                <input type="checkbox" id="noutati" checked>
+                <label>After <time class="val-noutati">June 10, 2021 00:00:00</time></label>
+            </div>
+            <label>Name:</label>
+
+            <textarea id="textarea-name" rows="1" cols="33">
+            </textarea>
             <button id="filter">Filter</button>
             <section id="produse">
                 <h2>Products</h2>
@@ -53,6 +61,7 @@
                                 <div class="info-prod">
                                     <p class="pret"><span class="caracteristica">Price: </span><span class="val-price"><%- prod.pret%></span></p>
                                     <p class="storage_size"><span class="caracteristica">Storage size(MB): </span><span class="val-storage_size"><%- prod.storage_size%></span></p>
+                                    <p><span class="caracteristica">Last update:</span> <time class="last_update"><%-prod.last_update %> </time></p>
                                 </div>
                             </div>
                             <div class="art2">
