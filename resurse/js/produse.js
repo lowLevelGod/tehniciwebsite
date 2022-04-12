@@ -59,7 +59,28 @@ window.addEventListener("DOMContentLoaded", function() {
             var textareaName = document.getElementById("textarea-name").value.toLowerCase();
             var cond6 = productName.startsWith(textareaName);
 
-            if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6) {
+            var prodSource = prod.getElementsByClassName("val-src")[0].innerHTML.toLowerCase();
+            var sourceOptions = document.getElementsByName("src-select");
+            for (let src of sourceOptions) {
+                if (src.selected) {
+                    var srcValue = src.value;
+                    break;
+                }
+            }
+            var cond7 = false;
+            switch (srcValue) {
+                case "1":
+                    cond7 = (prodSource == "open source");
+                    break;
+                case "2":
+                    cond7 = (prodSource == "closed source");
+                    break;
+                default:
+                    cond7 = true;
+                    break;
+            }
+            console.log(cond7);
+            if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7) {
                 prod.style.display = "grid";
             }
 
