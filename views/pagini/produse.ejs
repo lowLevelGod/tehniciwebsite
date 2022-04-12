@@ -43,7 +43,7 @@
             </div>
             <div>
                 <input type="checkbox" id="noutati" checked>
-                <label>After <time class="val-noutati">June 10, 2021 00:00:00</time></label>
+                <label>After <time class="val-noutati"><%-(new Date("June 10 2021")).toLocaleString('default', { weekday: 'long' })%> <%-(new Date("June 10 2021")).getUTCDate()%> <%- (new Date("June 10 2021")).toLocaleString('default', { month: 'long' })%>, <%-(new Date("June 10 2021")).getFullYear() %></time></label>
             </div>
             <label>Name:</label>
 
@@ -68,7 +68,7 @@
                                 <div class="info-prod">
                                     <p class="pret"><span class="caracteristica">Price: </span><span class="val-price"><%- prod.pret%></span></p>
                                     <p class="storage_size"><span class="caracteristica">Storage size(MB): </span><span class="val-storage_size"><%- prod.storage_size%></span></p>
-                                    <p><span class="caracteristica">Last update:</span> <time class="last_update"><%-prod.last_update %> </time></p>
+                                    <p><span class="caracteristica">Last update:</span> <time class="last_update"><%-(new Date(prod.last_update)).toLocaleString('default', { weekday: 'long' })%> <%-(new Date(prod.last_update)).getUTCDate()%> <%- (new Date(prod.last_update)).toLocaleString('default', { month: 'long' })%>, <%-(new Date(prod.last_update)).getFullYear() %> </time></p>
                                     <p><span class="caracteristica">Source type: </span> <span class="val-src"><%- prod.categorie_mica %> </span></p>
                                 </div>
                             </div>

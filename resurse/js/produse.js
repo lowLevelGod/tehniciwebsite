@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", function() {
             var textareaName = document.getElementById("textarea-name").value.toLowerCase();
             var cond6 = productName.startsWith(textareaName);
 
-            var prodSource = prod.getElementsByClassName("val-src")[0].innerHTML.toLowerCase();
+            var prodSource = prod.getElementsByClassName("val-src")[0].innerHTML.toLowerCase().replace(/\s+$/, '');
             var sourceOptions = document.getElementsByName("src-select");
             for (let src of sourceOptions) {
                 if (src.selected) {
@@ -79,7 +79,6 @@ window.addEventListener("DOMContentLoaded", function() {
                     cond7 = true;
                     break;
             }
-            console.log(cond7);
             if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7) {
                 prod.style.display = "grid";
             }
