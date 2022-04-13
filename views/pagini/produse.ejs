@@ -56,7 +56,22 @@
                 <option value="3" name="src-select" selected>Any</option>
             </select>
 
+            <label>Platforms :</label>
+            <select id="platform-select" multiple>
+                <option value="1" name="plt-select">Android</option>
+                <option value="2" name="plt-select">Ios</option>
+                <option value="3" name="plt-select" selected>Macos</option>
+                <option value="4" name="plt-select">Windows</option>
+                <option value="5" name="plt-select">Linux</option>
+                <option value="6" name="plt-select" selected>Any</option>
+            </select>
+
             <button id="filter">Filter</button>
+            <button id="sortAsc">Sort ascending</button>
+            <button id="sortDesc">Sort descending</button>
+            <button id="sum-button">Price sum</button><span id="s-sum"></span>
+            <button id="reset">Reset</button>
+
             <section id="produse">
                 <h2>Products</h2>
                 <div class="grid-produse">
@@ -70,6 +85,7 @@
                                     <p class="storage_size"><span class="caracteristica">Storage size(MB): </span><span class="val-storage_size"><%- prod.storage_size%></span></p>
                                     <p><span class="caracteristica">Last update:</span> <time class="last_update"><%-(new Date(prod.last_update)).toLocaleString('default', { weekday: 'long' })%> <%-(new Date(prod.last_update)).getUTCDate()%> <%- (new Date(prod.last_update)).toLocaleString('default', { month: 'long' })%>, <%-(new Date(prod.last_update)).getFullYear() %> </time></p>
                                     <p><span class="caracteristica">Source type: </span> <span class="val-src"><%- prod.categorie_mica %> </span></p>
+                                    <p><span class="caracteristica">Platforms:</span> <span class="val-platform"><%- prod.platforms %> </span></p>
                                 </div>
                             </div>
                             <div class="art2">

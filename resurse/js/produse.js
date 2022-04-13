@@ -17,8 +17,8 @@ window.addEventListener("DOMContentLoaded", function() {
             var keyword = document.getElementById("inp-keyword").value;
             var cond1 = description.includes(keyword);
 
-            var inpPrice = parseInt(document.getElementById("inp-price").innerHTML);
-            var price = parseInt(prod.getElementsByClassName("val-price")[0].innerHTML);
+            var inpPrice = parseFloat(document.getElementById("inp-price").innerHTML);
+            var price = parseFloat(prod.getElementsByClassName("val-price")[0].innerHTML);
             var cond2 = price >= inpPrice ? true : false;
 
             var productChoice = document.getElementById("product-choice").value.toLowerCase();
@@ -79,39 +79,43 @@ window.addEventListener("DOMContentLoaded", function() {
                     cond7 = true;
                     break;
             }
-            if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7) {
+
+            var prodPlatforms = prod.getElementsByClassName("val-platform")[0].innerHTML.split(/\s*,\s*/);
+            prodPlatforms[prodPlatforms.length - 1] = prodPlatforms[prodPlatforms.length - 1].replace(/\s+$/, '');
+            var platformOptions = document.getElementsByName("plt-select");
+
+            var cond8 = true;
+            for (let plt of platformOptions) {
+                if (plt.selected) {
+                    if (plt.value == "6")
+                        cond8 = true;
+                    else {
+                        if (!prodPlatforms.includes(plt.innerHTML.toLowerCase())) {
+                            cond8 = false;
+                        }
+                    }
+                }
+            }
+            if (cond1 && cond2 && cond3 && cond4 && cond5 && cond6 && cond7 && cond8) {
                 prod.style.display = "grid";
             }
 
         }
     }
-    var rng = document.getElementById("inp-pret");
-    rng.onchange = function() {
-        var info = document.getElementById("infoRange"); //returneaza null daca nu gaseste elementul
-        if (!info) {
-            info = document.createElement("span");
-            info.id = "infoRange"
-            this.parentNode.appendChild(info);
-        }
-
-        info.innerHTML = "(" + this.value + ")";
-    }
-
-
 
     function sorteaza(semn) {
         var articole = document.getElementsByClassName("produs");
         var v_articole = Array.from(articole);
         v_articole.sort(function(a, b) {
-            var nume_a = a.getElementsByClassName("val-nume")[0].innerHTML;
-            var nume_b = b.getElementsByClassName("val-nume")[0].innerHTML;
+            var nume_a = a.getElementsByClassName("val-name")[0].innerHTML;
+            var nume_b = b.getElementsByClassName("val-name")[0].innerHTML;
             if (nume_a != nume_b) {
                 return semn * nume_a.localeCompare(nume_b);
             } else {
 
-                var pret_a = parseInt(a.getElementsByClassName("val-pret")[0].innerHTML);
-                var pret_b = parseInt(b.getElementsByClassName("val-pret")[0].innerHTML);
-                return semn * (pret_a - pret_b);
+                var rap_a = parseFloat(a.getElementsByClassName("val-storage_size")[0].innerHTML) / parseFloat(a.getElementsByClassName("val-price")[0].innerHTML);
+                var rap_b = parseFloat(b.getElementsByClassName("val-storage_size")[0].innerHTML) / parseFloat(b.getElementsByClassName("val-price")[0].innerHTML);
+                return semn * (rap_a - rap_b);
             }
         });
         for (let art of v_articole) {
@@ -119,32 +123,55 @@ window.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var btn2 = document.getElementById("sortCrescNume");
+    var btn2 = document.getElementById("sortAsc");
     btn2.onclick = function() {
 
         sorteaza(1)
     }
 
-    var btn3 = document.getElementById("sortDescrescNume");
+    var btn3 = document.getElementById("sortDesc");
     btn3.onclick = function() {
         sorteaza(-1)
     }
+    var btnSum = document.getElementById("sum-button");
+    btnSum.onclick = function() {
+        var suma = 0;
+        var articole = document.getElementsByClassName("produs");
+        for (let art of articole) {
+            if (art.style.display != "none")
+                suma += parseFloat(art.getElementsByClassName("val-price")[0].innerHTML);
+        }
+
+        var spanSuma;
+        spanSuma = document.getElementById("nr-sum");
+        if (!spanSuma) {
+            spanSuma = document.createElement("span");
+            spanSuma.innerHTML = " Sum:" + suma; //<span> Suma:...
+            spanSuma.id = "nr-sum"; //<span id="..."
+            document.getElementById("s-sum").appendChild(spanSuma);
+            setTimeout(function() { document.getElementById("nr-sum").remove() }, 2000);
+        }
+    }
 
 
-    document.getElementById("resetare").onclick = function() {
-        //resetare inputuri
-        document.getElementById("i_rad4").checked = true;
-        document.getElementById("inp-pret").value = document.getElementById("inp-pret").min;
-        document.getElementById("infoRange").innerHTML = "(" + document.getElementById("inp-pret").min + ")";
+    document.getElementById("reset").onclick = function() {
+        document.getElementById("inp-keyword").value = "";
+        document.getElementById("inp-price").innerHTML = document.getElementById("priceRange").min;
+        document.getElementById("priceRange").value = document.getElementById("priceRange").min;
+        document.getElementById("product-choice").value = "";
+        var radbtns = document.getElementsByName("szrad").forEach(rd => rd.value == 4 ? rd.checked = true : rd.checked = false);
+        document.getElementById("noutati").checked = true;
+        document.getElementById("textarea-name").value = "";
+        document.getElementsByName("src-select").forEach(elem => elem.value == 3 ? elem.selected = true : elem.selected = false);
+        document.getElementsByName("plt-select").forEach(elem => elem.value == 6 ? elem.selected = true : elem.selected = false);
 
-        //de completat...
+        /*document.getElementById("inp-pret").value = document.getElementById("inp-pret").min;
+        document.getElementById("infoRange").innerHTML = "(" + document.getElementById("inp-pret").min + ")"*/
 
-
-        //resetare articole
         var articole = document.getElementsByClassName("produs");
         for (let art of articole) {
 
-            art.style.display = "block";
+            art.style.display = "grid";
         }
     }
 
