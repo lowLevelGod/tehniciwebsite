@@ -221,7 +221,7 @@ function randeazaEroare(res, identificator, titlu, text, imagine) {
 }
 
 const hostname = "127.0.0.1";
-const port = 8080;
+var port = process.env.PORT || 5000;
 
 app.listen(port, hostname);
 console.log("A pornit")

@@ -1,36 +1,40 @@
 {
-  "name": "tehniciwebsite",
-  "version": "1.0.0",
-  "description": "software license small companies fair competition",
-  "main": "app.js",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.3",
-    "node-sass": "^7.0.1",
-    "pg": "^8.7.3",
-    "pg-native": "^3.0.0",
-    "sass": "^1.49.9",
-    "sharp": "^0.30.3"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lowLevelGod/tehniciwebsite.git"
-  },
-  "keywords": [
-    "software",
-    "license",
-    "small",
-    "companies",
-    "fair",
-    "competition"
-  ],
-  "author": "Petre",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lowLevelGod/tehniciwebsite/issues"
-  },
-  "homepage": "https://github.com/lowLevelGod/tehniciwebsite#readme"
+    "engines": {
+        "node": "16.x"
+    },
+    "name": "tehniciwebsite",
+    "version": "1.0.0",
+    "description": "software license small companies fair competition",
+    "main": "app.js",
+    "dependencies": {
+        "ejs": "^3.1.6",
+        "express": "^4.17.3",
+        "node-sass": "^7.0.1",
+        "pg": "^8.7.3",
+        "pg-native": "^3.0.0",
+        "sass": "^1.49.9",
+        "sharp": "^0.30.3"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lowLevelGod/tehniciwebsite.git"
+    },
+    "keywords": [
+        "software",
+        "license",
+        "small",
+        "companies",
+        "fair",
+        "competition"
+    ],
+    "author": "Petre",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lowLevelGod/tehniciwebsite/issues"
+    },
+    "homepage": "https://github.com/lowLevelGod/tehniciwebsite#readme"
 }
