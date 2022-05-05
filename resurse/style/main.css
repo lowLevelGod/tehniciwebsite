@@ -112,9 +112,36 @@ html {
     }
 }
 
+#themebtn{
+    cursor:pointer;
+    width:fit-content;
+}
+
 body {
     --main-text-color: #C5C6C7;
     --main-bg-color: #1F2833;
+    --h-color: #66FCF1;
+    --sec-bg-color: #0B0C10;
+    --sec-text-color: #45A29E;
+    --link-color: #80d7ff;
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+body.darktheme {
+    --main-text-color: rgb(38, 38, 160);
+    --main-bg-color: white;
+    --h-color: #66FCF1;
+    --sec-bg-color: #0B0C10;
+    --sec-text-color: #45A29E;
+    --link-color: #80d7ff;
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+body.darktheme {
+    --main-text-color: rgb(38, 38, 160);
+    --main-bg-color: white;
     --h-color: #66FCF1;
     --sec-bg-color: #0B0C10;
     --sec-text-color: #45A29E;

@@ -1,0 +1,20 @@
+diff a/fragmente/header.ejs b/fragmente/header.ejs	(rejected hunks)
+@@ -1,5 +1,18 @@
++<script>
++    window.onload = function()
++    {
++    let theme = localStorage.getItem("theme") == "lighttheme";
++    document.getElementById("themebtn").childNodes[0].className = localStorage.getItem("themebtn");
++    if (!theme)
++    {
++        document.body.classList.add("darktheme");
++    }
++}
++</script>
++
+ <header>
+     <p class="watermark"></p>
++    <div id="themebtn"><i class="fa-solid fa-sun"></i></div>
+     <div class="banner">
+         <h1>Software License Shop <i class="fas fa-sync fa-spin"></i></h1>
+     </div>

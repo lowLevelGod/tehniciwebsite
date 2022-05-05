@@ -1,0 +1,13 @@
+diff a/resurse/style/main.css b/resurse/style/main.css	(rejected hunks)
+@@ -112,6 +112,11 @@ html {
+     }
+ }
+ 
++#themebtn{
++    cursor:pointer;
++    width:fit-content;
++}
++
+ body {
+     --main-text-color: #C5C6C7;
+     --main-bg-color: #1F2833;

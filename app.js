@@ -221,7 +221,11 @@ function randeazaEroare(res, identificator, titlu, text, imagine) {
 }
 
 const hostname = "127.0.0.1";
+<<<<<<< Updated upstream
 const port = 8080;
+=======
+var port = process.env.PORT || 8080;
+>>>>>>> Stashed changes
 
 app.listen(port, hostname);
 console.log("A pornit")
