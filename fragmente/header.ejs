@@ -1,13 +1,11 @@
 <script>
-    window.onload = function()
-    {
-    let theme = localStorage.getItem("theme") == "lighttheme";
-    document.getElementById("themebtn").childNodes[0].className = localStorage.getItem("themebtn");
-    if (!theme)
-    {
-        document.body.classList.add("darktheme");
-    }
-}
+    window.addEventListener('DOMContentLoaded', function() {
+        let theme = localStorage.getItem("theme") == "lighttheme";
+        document.getElementById("themebtn").childNodes[0].className = localStorage.getItem("themebtn");
+        if (!theme) {
+            document.body.classList.add("darktheme");
+        }
+    });
 </script>
 
 <header>
