@@ -24,32 +24,32 @@ CREATE TABLE IF NOT EXISTS produse (
 );
 
 INSERT into produse (nume,descriere,pret, storage_size, categorie_mare, categorie_mica, platforms, continued_support, imagine, last_update) VALUES 
-('Zimtex', 'text editor', 10.9 , 200,'Text_editor', 'open source', '{"android","ios"}', True, 'text-editor.jpg', 'December 17, 2021'),
+('Zimtex', 'text editor', 10.9 , 200,'Text_editor', 'open source', '{"android","ios"}', True, '/resurse/pics/galerie/briose-frisca.png', 'December 17, 2021'),
 
-('Apachestone', 'video player', 10.9 , 500,'Video_player', 'open source', '{"android","ios"}', True, 'video-player.jpg', 'March 17, 2021'),
+('Apachestone', 'video player', 10.9 , 500,'Video_player', 'open source', '{"android","ios"}', True, '/resurse/pics/galerie/clatite.png', 'March 17, 2021'),
 
-('Peachworks', 'music player', 10.9 , 500,'Music_player', 'open source', '{"android","ios"}', True,'music-player.jpg', 'June 15, 2021'),
+('Peachworks', 'music player', 10.9 , 500,'Music_player', 'open source', '{"android","ios"}', True,'/resurse/pics/galerie/gogosi.png', 'June 15, 2021'),
 
-('Canlux', 'Browser', 10.9 , 500,'Browser', 'open source', '{"android","ios", "windows"}', True,'browser.jpg', 'May 2, 2021'),
+('Canlux', 'Browser', 10.9 , 500,'Browser', 'open source', '{"android","ios", "windows"}', True,'/resurse/pics/galerie/hecker.png', 'May 2, 2021'),
 
-('Indidexon', 'text editor', 10.9 , 500,'Text_editor', 'open source', '{"android","ios", "windows"}', True,'text-editor.jpg', 'July 21, 2021'),
+('Indidexon', 'text editor', 10.9 , 500,'Text_editor', 'open source', '{"android","ios", "windows"}', True,'/resurse/pics/galerie/prajitura-ciocolata.png', 'July 21, 2021'),
 
-('Granitelight', 'Browser', 24.9 , 500,'Browser', 'open source', '{"macos"}', False, 'browser.jpg', 'March 25, 2021'),
+('Granitelight', 'Browser', 24.9 , 500,'Browser', 'open source', '{"macos"}', False, '/resurse/pics/galerie/scemer.png', 'March 25, 2021'),
 
-('Vineshow', 'video player', 24.9 , 700,'Video_player', 'open source', '{"macos"}', False, 'video-player.jpg', 'October 17, 2021'),
+('Vineshow', 'video player', 24.9 , 700,'Video_player', 'open source', '{"macos"}', False, '/resurse/pics/galerie/skittle.png', 'October 17, 2021'),
 
-('Globaltube', 'text editor', 24.9 , 700,'Text_editor', 'open source', '{"macos"}', False, 'text-editor.jpg', 'November 21, 2021'),
+('Globaltube', 'text editor', 24.9 , 700,'Text_editor', 'open source', '{"macos"}', False, '/resurse/pics/galerie/tarta-afine.png', 'November 21, 2021'),
 
-('Zamzamcore', 'Browser', 24.9 , 700,'Browser', 'closed source', '{"macos", "windows", "linux"}', True, 'browser.jpg', 'January 17, 2021'),
+('Zamzamcore', 'Browser', 24.9 , 700,'Browser', 'closed source', '{"macos", "windows", "linux"}', True, '/resurse/pics/galerie/tort-scortisoara.png', 'January 17, 2021'),
 
-('Driftcast', 'music player', 24.9 , 700,'Music_player', 'closed source', '{"macos", "windows", "linux"}', True, 'music-player.jpg', 'February 17, 2022'),
+('Driftcast', 'music player', 24.9 , 700,'Music_player', 'closed source', '{"macos", "windows", "linux"}', True, '/resurse/pics/galerie/tort-trandafiri.png', 'February 17, 2022'),
 
-('Angeldale', 'text editor', 24.9 , 700,'Text_editor', 'closed source', '{"macos", "windows", "linux"}', False, 'text-editor.jpg', 'December 17, 2022'),
+('Angeldale', 'text editor', 24.9 , 700,'Text_editor', 'closed source', '{"macos", "windows", "linux"}', False, '/resurse/pics/galerie/hecker.png', 'December 17, 2022'),
 
-('Shadowworks', 'video player', 50.9 , 950,'Video_player', 'closed source', '{"macos", "windows", "linux"}', True, 'video-player.jpg', 'November 10, 2021'),
+('Shadowworks', 'video player', 50.9 , 950,'Video_player', 'closed source', '{"macos", "windows", "linux"}', True, '/resurse/pics/galerie/clatite.png', 'November 10, 2021'),
 
-('Boaraid', 'File_archiver', 50.9 , 950,'File_archiver', 'closed source', '{"android", "linux"}', False, 'file-archiver.jpg', 'December 17, 2021'),
+('Boaraid', 'File_archiver', 50.9 , 950,'File_archiver', 'closed source', '{"android", "linux"}', False, '/resurse/pics/galerie/prajitura-ciocolata.png', 'December 17, 2021'),
 
-('Voidshade', 'text editor', 50.9 , 950,'Text_editor', 'closed source', '{"android", "linux"}', True, 'text-editor.jpg', 'December 17, 2021'),
+('Voidshade', 'text editor', 50.9 , 950,'Text_editor', 'closed source', '{"android", "linux"}', True, '/resurse/pics/galerie/briose-frisca.png', 'December 17, 2021'),
 
-('Alphacon', 'File_archiver', 50.9, 950,'File_archiver', 'closed source', '{"android", "linux"}', True, 'file-archiver.jpg', 'December 17, 2021')
+('Alphacon', 'File_archiver', 50.9, 950,'File_archiver', 'closed source', '{"android", "linux"}', True, '/resurse/pics/galerie/skittle.png', 'December 17, 2021')
