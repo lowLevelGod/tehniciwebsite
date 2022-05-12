@@ -136,7 +136,9 @@
     .menu {
         display: flex;
         justify-content: space-between;
-        padding: 0px;
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     .menu-icon {
         display: none;
@@ -178,7 +180,9 @@
     .menu {
         display: flex;
         justify-content: space-between;
-        padding: 0px;
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
     .menu-icon {
         display: none;

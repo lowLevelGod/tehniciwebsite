@@ -9,6 +9,7 @@ const formidable = require('formidable')
 const crypto = require('crypto')
 const path = require('path');
 const nodemailer = require("nodemailer");
+const session = require("express-session");
 
 async function trimiteMail(
     email,
@@ -90,6 +91,22 @@ app = express()
 app.set('view engine', 'ejs')
 
 app.use('/resurse', express.static(__dirname + '/resurse'))
+
+app.use(
+    session({
+        secret: "abcdefg", //folosit de express session pentru criptarea id-ului de sesiune
+        resave: true,
+        saveUninitialized: false,
+    })
+);
+
+app.use("/*", function(req, res, next) {
+    res.locals.utilizator = req.session.utilizator;
+    res.locals.mesajLogin = req.session.mesajLogin;
+    req.session.mesajLogin = null;
+    next();
+});
+
 
 app.use('/*', function(req, res, next) {
     client.query(
@@ -305,8 +322,8 @@ var intervaleAscii = [
     [97, 122],
 ];
 // for (let interval of intervaleAscii) {
-    for (let i = intervaleAscii[2][0]; i <= intervaleAscii[2][1]; i++)
-        obGlobal.sirAlphaNum += String.fromCharCode(i);
+for (let i = intervaleAscii[2][0]; i <= intervaleAscii[2][1]; i++)
+    obGlobal.sirAlphaNum += String.fromCharCode(i);
 // }
 
 function genereazaToken(n) {
@@ -361,8 +378,8 @@ app.post('/companyform', function(req, res) {
                     var token3 = (token + token2.toString()).trim();
                     console.log(token);
                     var parolaCriptata = crypto
-                    .scryptSync(campuriText.parola, parolaServer, 64)
-                    .toString('hex')
+                        .scryptSync(campuriText.parola, parolaServer, 64)
+                        .toString('hex')
                     var comandaInserare = `insert into utilizatori (username, nume, prenume, email, parola, culoare_chat, cod,  telefon, imagine_profil) values ('${campuriText.username}', '${campuriText.nume}', '${campuriText.prenume}', '${campuriText.email}', '${parolaCriptata}', '${campuriText.culoare_chat}', '${token3}', '${campuriText.phone}', '${campuriFisier.poza.newFilename}')`;
                     client.query(comandaInserare, function(err, rezInserare) {
                         if (err) {
@@ -421,38 +438,150 @@ app.post('/login', function(req, res) {
     })
 })
 
-app.get("/cod_mail/:token/:username", function (req, res) {
+app.post(['/', '/index', '/home'], function(req, res) {
+    var formular = new formidable.IncomingForm();
+    formular.parse(req, function(err, campuriText, campuriFisier) {
+        console.log(campuriText);
+        var parolaCriptata = crypto
+            .scryptSync(campuriText.parola, parolaServer, 64)
+            .toString("hex");
+        var querySelect = `select * from utilizatori where username='${campuriText.username}' and parola='${parolaCriptata}' and confirmat_mail=true`;
+        // var querySelect = `select * from utilizatori where username='$1::text and parola=$2::text and confirmat_mail=true`;
+        console.log(querySelect);
+        client.query(querySelect, function(err, rezSelect) {
+            if (err) console.log(err);
+            else {
+                if (rezSelect.rows.length == 1) {
+                    //daca am utilizatorul si a dat credentiale corecte
+                    req.session.utilizator = {
+                        id: rezSelect.rows[0].id,
+                        nume: rezSelect.rows[0].nume,
+                        prenume: rezSelect.rows[0].prenume,
+                        username: rezSelect.rows[0].username,
+                        email: rezSelect.rows[0].email,
+                        culoare_chat: rezSelect.rows[0].culoare_chat,
+                        rol: rezSelect.rows[0].rol,
+                        imagine: rezSelect.rows[0].imagine_profil,
+                        phone: rezSelect.rows[0].telefon
+                    };
+                    res.redirect("/index");
+                } else {
+                    req.session.mesajLogin = "Login esuat";
+                    res.redirect("/index");
+                }
+            }
+        });
+    });
+});
+
+app.get("/cod_mail/:token/:username", function(req, res) {
     req.params.username = req.params.username.toLowerCase();
     req.params.token = req.params.token.replace('-', '');
     var comandaSelect = `update utilizatori set confirmat_mail=true where username='${req.params.username}' and cod='${req.params.token}'`;
     console.log(comandaSelect);
-    client.query(comandaSelect, function (err, rezUpdate) {
-      if (err) {
-        console.log(err);
-        randeazaEroare(res, 2);
-      } else {
-        if (rezUpdate.rowCount == 1) {
-            console.log(rezUpdate);
-          res.render("pagini/confirmare");
+    client.query(comandaSelect, function(err, rezUpdate) {
+        if (err) {
+            console.log(err);
+            randeazaEroare(res, 2);
         } else {
-            
-          randeazaEroare(
-            res,
-            2,
-            "Eroare link confirmare",
-            "Nu e userul sau linkul corect"
-          );
-        }
-      }
-    });
-  });
-  
+            if (rezUpdate.rowCount == 1) {
+                console.log(rezUpdate);
+                res.render("pagini/confirmare");
+            } else {
 
-app.get('/logout', function(req, res) {
-    req.session.destroy()
-    res.locals.utilizator = null
-    res.render('pagini/logouts')
+                randeazaEroare(
+                    res,
+                    2,
+                    "Eroare link confirmare",
+                    "Nu e userul sau linkul corect"
+                );
+            }
+        }
+    });
+});
+
+
+app.get("/useri", function(req, res) {
+    if (req.session.utilizator && req.session.utilizator.rol == "admin") {
+        client.query(
+            "select * from utilizatori where rol='comun'",
+            function(err, rezQuery) {
+                console.log(err);
+                console.log(rezQuery);
+                res.render("pagini/useri", { useri: rezQuery.rows });
+            }
+        );
+    } else {
+        randeazaEroare(res, 403);
+    }
+});
+
+app.post("/sterge_utiliz", function(req, res) {
+    var formular = new formidable.IncomingForm();
+    formular.parse(req, function(err, campuriText, campuriFisier) {
+        let queryDel = `delete from utilizatori where id=${campuriText.id_utiliz}`;
+        client.query(queryDel, function(err, rezQuery) {
+            console.log(err);
+            // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
+            res.redirect("/useri");
+        });
+    });
+});
+
+// ---------------- Update profil -----------------------------
+app.post("/profil", function(req, res) {
+    if (!req.session.utilizator) {
+        res.render("pagini/error_default", { text: "Nu sunteti logat." });
+        return;
+    }
+    var formular = new formidable.IncomingForm();
+
+    formular.parse(req, function(err, campuriText, campuriFile) {
+        var criptareParola = crypto
+            .scryptSync(campuriText.parola, parolaServer, 64)
+            .toString("hex");
+
+        var queryUpdate = `update utilizatori set nume='${campuriText.nume}', prenume='${campuriText.prenume}', email='${campuriText.email}', culoare_chat='${campuriText.culoare_chat}' where parola='${criptareParola}'`;
+        console.log(queryUpdate);
+        client.query(queryUpdate, function(err, rez) {
+            if (err) {
+                console.log(err);
+                res.render("pagini/eroare_generala", {
+                    text: "Eroare baza date. Incercati mai tarziu.",
+                });
+                return;
+            }
+
+            if (rez.rowCount == 0) {
+                res.render("pagini/profil", {
+                    mesaj: "Update-ul nu s-a realizat. Verificati parola introdusa.",
+                });
+                return;
+            } else {
+                //actualizare sesiune
+                req.session.utilizator.nume = campuriText.nume;
+                req.session.utilizator.prenume = campuriText.prenume;
+                req.session.utilizator.email = campuriText.email;
+                req.session.utilizator.culoare_chat = campuriText.culoare_chat;
+            }
+
+            res.render("pagini/profil", {
+                mesaj: "Update-ul s-a realizat cu succes.",
+            });
+        });
+    });
+});
+
+app.get("/profil", function(req, res) {
+    res.render("pagini/profil");
 })
+
+app.get("/logout", function(req, res) {
+    req.session.destroy();
+    res.locals.utilizator = null;
+    res.redirect("index");
+});
+
 
 app.get('/*', function(req, res) {
     res.render('pagini' + req.url, function(err, rezRender) {
