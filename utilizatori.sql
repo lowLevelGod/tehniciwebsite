@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS utilizatori (
    cod character varying(200),
    rol roluri NOT NULL DEFAULT 'comun',
    telefon character varying(200),
-   imagine_profil character varying(200)
+   imagine_profil character varying(200),
+   confirmat_mail BOOL DEFAULT 'f'
 );
 
 -- CREATE TABLE IF NOT EXISTS accesari (

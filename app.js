@@ -66,7 +66,7 @@ if (process.env.SITE_ONLINE) {
     });
 } else {
     obGlobal.protocol = "http://";
-    obGlobal.numeDomeniu = "127.0.0.1" + obGlobal.port;
+    obGlobal.numeDomeniu = "127.0.0.1:" + obGlobal.port;
     var client = new Client({
         database: 'dbfortw',
         user: 'pedro',
@@ -233,26 +233,6 @@ app.get('/ceva', function(req, res, next) {
     next()
 })
 
-app.get('/*', function(req, res) {
-    res.render('pagini' + req.url, function(err, rezRender) {
-        if (err) {
-            if (err.message.includes('Failed to lookup view')) {
-                console.log(err)
-                    //res.status(404).render("pagini/404");
-                randeazaEroare(res, 404)
-            } else {
-                res.render('pagini/error_default')
-            }
-        } else {
-            //console.log(rezRender)
-            res.send(rezRender)
-        }
-    })
-
-    //console.log("generala:",req.url);
-    res.end()
-})
-
 function creeazaImagini() {
     var buf = fs
         .readFileSync(__dirname + '/resurse/json/galerie.json')
@@ -324,10 +304,10 @@ var intervaleAscii = [
     [65, 90],
     [97, 122],
 ];
-for (let interval of intervaleAscii) {
-    for (let i = interval[0]; i <= interval[1]; i++)
+// for (let interval of intervaleAscii) {
+    for (let i = intervaleAscii[2][0]; i <= intervaleAscii[2][1]; i++)
         obGlobal.sirAlphaNum += String.fromCharCode(i);
-}
+// }
 
 function genereazaToken(n) {
     var token = "";
@@ -375,14 +355,18 @@ app.post('/companyform', function(req, res) {
                         err: eroare
                     })
                 } else {
-                    var token = genereazaToken(100);
-                    var comandaInserare = `insert into utilizatori (username, nume, prenume, email, parola, culoare_chat, cod,  telefon, imagine_profil) values ('${campuriText.username}', '${campuriText.nume}', '${campuriText.prenume}', '${parolaCriptata}', '${campuriText.email}', '${campuriText.culoare_chat}', '${token}', '${campuriText.phone}', '${campuriFisier.poza.newFilename}')`;
+                    campuriText.username = campuriText.username.toLowerCase();
+                    var token = genereazaToken(50);
+                    var token2 = Math.floor(new Date().getTime() / 1000);
+                    var token3 = (token + token2.toString()).trim();
+                    console.log(token);
                     var parolaCriptata = crypto
-                        .scryptSync(campuriText.parola, parolaServer, 64)
-                        .toString('hex')
+                    .scryptSync(campuriText.parola, parolaServer, 64)
+                    .toString('hex')
+                    var comandaInserare = `insert into utilizatori (username, nume, prenume, email, parola, culoare_chat, cod,  telefon, imagine_profil) values ('${campuriText.username}', '${campuriText.nume}', '${campuriText.prenume}', '${campuriText.email}', '${parolaCriptata}', '${campuriText.culoare_chat}', '${token3}', '${campuriText.phone}', '${campuriFisier.poza.newFilename}')`;
                     client.query(comandaInserare, function(err, rezInserare) {
                         if (err) {
-                            console.log(err)
+                            //console.log(err)
                             res.render('pagini/companyform', {
                                 err: 'Eroare baza de date'
                             })
@@ -390,7 +374,8 @@ app.post('/companyform', function(req, res) {
                             res.render('pagini/companyform', {
                                 raspuns: 'Datele au fost introduse'
                             })
-                            let linkConfirmare = `${obGlobal.protocol}${obGlobal.numeDomeniu}/cod/${campuriText.username}/${token}`;
+                            let usernameupper = campuriText.username.toUpperCase();
+                            let linkConfirmare = `${obGlobal.protocol}${obGlobal.numeDomeniu}/cod_mail/${token}-${token2}/${usernameupper}`;
                             trimiteMail(
                                 campuriText.email,
                                 "Te-ai inregistrat",
@@ -436,10 +421,57 @@ app.post('/login', function(req, res) {
     })
 })
 
+app.get("/cod_mail/:token/:username", function (req, res) {
+    req.params.username = req.params.username.toLowerCase();
+    req.params.token = req.params.token.replace('-', '');
+    var comandaSelect = `update utilizatori set confirmat_mail=true where username='${req.params.username}' and cod='${req.params.token}'`;
+    console.log(comandaSelect);
+    client.query(comandaSelect, function (err, rezUpdate) {
+      if (err) {
+        console.log(err);
+        randeazaEroare(res, 2);
+      } else {
+        if (rezUpdate.rowCount == 1) {
+            console.log(rezUpdate);
+          res.render("pagini/confirmare");
+        } else {
+            
+          randeazaEroare(
+            res,
+            2,
+            "Eroare link confirmare",
+            "Nu e userul sau linkul corect"
+          );
+        }
+      }
+    });
+  });
+  
+
 app.get('/logout', function(req, res) {
     req.session.destroy()
     res.locals.utilizator = null
     res.render('pagini/logouts')
+})
+
+app.get('/*', function(req, res) {
+    res.render('pagini' + req.url, function(err, rezRender) {
+        if (err) {
+            if (err.message.includes('Failed to lookup view')) {
+                console.log(err)
+                    //res.status(404).render("pagini/404");
+                randeazaEroare(res, 404)
+            } else {
+                res.render('pagini/error_default')
+            }
+        } else {
+            //console.log(rezRender)
+            res.send(rezRender)
+        }
+    })
+
+    //console.log("generala:",req.url);
+    res.end()
 })
 
 const hostname = '127.0.0.1'
