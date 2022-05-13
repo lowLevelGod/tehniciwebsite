@@ -85,6 +85,8 @@
                                 <%- categ.unnest %>
                             </a>
                             <%}%>
+                                <% if (locals.utilizator && locals.utilizator.rol == 'admin') %>
+                                    <a href="/administrare">Administrare</a>
                     </div>
                 </li>
                 <% if(locals.utilizator) { %>
@@ -101,9 +103,9 @@
                     <% } %>
                         </li>
                         <% if(locals.utilizator && locals.utilizator.rol == 'admin') { %>
-                        <li class="dropdown">
-                            <button class="dropbtn"> <a href="/useri">Useri</a></button>
-                            <% } %>
+                            <li class="dropdown">
+                                <button class="dropbtn"> <a href="/useri">Useri</a></button>
+                                <% } %>
             </ul>
         </nav>
 </header>

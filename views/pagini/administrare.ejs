@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Administrare</title>
+    <%- include("../../fragmente/head") %>
+</head>
+
+<body>
+    <%- include("../../fragmente/header") %>
+
+        <main>
+            <% for (let i=0 ; i < locals.produse.length; ++i) { %>
+                <form method="post" class="date" action="/modifproduse" enctype="multipart/form-data">
+                    <label>
+                        ID: <input type="text" name="id" value="<%= produse[i].id %>" readonly>
+                    </label>
+                    <label>
+                        Name: <input type="text" name="nume" value="<%= produse[i].nume %>">
+                    </label>
+                    <label>
+                        Description: <input type="text" name="descriere" value="<%= produse[i].descriere %>">
+                    </label>
+                    <label>
+                        Storage size: <input type="text" name="storage_size" value="<%= produse[i].storage_size %>">
+                    </label>
+                    <label>
+                        Category: <select name="categorie_mare">
+                        <% for (let c of locals.categ) {%>
+                            <% if (c.unnest == locals.produse[i].categorie_mare) {%>
+                            <option value="<%=c.unnest%>" selected><%=c.unnest%></option>
+                            <%} else { %>
+                                <option value="<%=c.unnest%>"><%=c.unnest%></option>
+                            <%}%>
+                        <%}%>
+                                </select>
+                    </label>
+                    <label>
+                        Source type: <select name="categorie_mica">
+                        <% for (let c of locals.categMica) {%>
+                            <% if (c.unnest == locals.produse[i].categorie_mica) {%>
+                            <option value="<%=c.unnest%>" selected><%=c.unnest%></option>
+                            <%} else {%>
+                                <option value="<%=c.unnest%>"><%=c.unnest%></option>
+                            <%}%>
+                        <%}%>
+                                    </select>
+                    </label>
+                    <label>
+                        Platforms: <input type="text" name="platforms" value="<%= produse[i].platforms %>">
+                    </label>
+                    <input type="submit" value="Save Changes">
+                </form>
+                <%}%>
+        </main>
+
+
+        <%- include("../../fragmente/footer") %>
+
+</body>
+
+</html>
