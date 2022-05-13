@@ -7,7 +7,7 @@
         <script>
             // populez inputurile din pagina de profil cu datele din tabel (incarcate prin EJS)
             window.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("p-reintrod").remove();
+                document.getElementById("rparl").value = "";
                 document.getElementById("inp-username").value =
                     "<%= locals.utilizator.username %>";
                 document.getElementById("inp-username").readOnly = true;

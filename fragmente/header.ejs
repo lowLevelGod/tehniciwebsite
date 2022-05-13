@@ -15,7 +15,7 @@
         <h1>Software License Shop <i class="fas fa-sync fa-spin"></i></h1>
     </div>
     <% if(!locals.utilizator) { %>
-        <form method="post" class="date" action="<%= locals.action %>" enctype="multipart/form-data">
+        <form method="post" class="date" action="/login" enctype="multipart/form-data">
             <p>
                 <label>
                 Username: <input type="text" name="username" pattern="[A-Za-z0-9]+" required>
@@ -27,6 +27,7 @@
             </label>
             </p>
             <input type="submit" value="Log in">
+            <span><%-locals.mesajLogin%></span>
             <%}%>
                 <% if(locals.utilizator) { %>
                     <img src="/user_pics/<%-locals.utilizator.imagine%>" alt="/user_pics/<%-locals.utilizator.imagine%>">
@@ -99,8 +100,10 @@
                     </li>
                     <% } %>
                         </li>
+                        <% if(locals.utilizator && locals.utilizator.rol == 'admin') { %>
                         <li class="dropdown">
                             <button class="dropbtn"> <a href="/useri">Useri</a></button>
+                            <% } %>
             </ul>
         </nav>
 </header>
