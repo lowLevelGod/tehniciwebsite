@@ -45,7 +45,14 @@
         </label>
     </p>
     <p>
-        <input type="submit" value="Trimite">
+        <input type="submit" name="mod" value="Send">
         <input type="reset" value="Reseteaza">
+        <% if(locals.utilizator) {%>
+
+            <label>
+                    <input type="text" name="id" value="<%=locals.utilizator.id%>" hidden>
+                </label>
+            <input type="submit" name="mod" value="Delete">
+            <%}%>
     </p>
 </form>

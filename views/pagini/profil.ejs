@@ -5,6 +5,7 @@
     <title>Profile</title>
     <%- include("../../fragmente/head") %>
         <script>
+            <% if (locals.utilizator) {%>
             // populez inputurile din pagina de profil cu datele din tabel (incarcate prin EJS)
             window.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("rparl").value = "";
@@ -28,6 +29,7 @@
                     if (opt.value == "<%= locals.utilizator.culoare_chat %>")
                         opt.selected = true;
             });
+            <%}%>
         </script>
 </head>
 
@@ -37,13 +39,17 @@
     </header>
     <main>
         <section>
-            <h2>Profil</h2>
-            <p>Mănânci prea multe prajituri și știi și tu asta!</p>
-            <p>
-                <%= locals.mesaj %>
-            </p>
+            <% if (locals.utilizator) {%>
+                <h2>Profil</h2>
+                <p>Mănânci prea multe prajituri și știi și tu asta!</p>
+                <p>
+                    <%= locals.mesaj %>
+                </p>
+                <%- include("../../fragmente/formular",{action:"/profil"}) %>
         </section>
-        <%- include("../../fragmente/formular",{action:"/profil"}) %>
+        <%} else {%>
+            <p>You are not logged in !</p>
+            <%}%>
     </main>
 
     <%- include("../../fragmente/footer") %>

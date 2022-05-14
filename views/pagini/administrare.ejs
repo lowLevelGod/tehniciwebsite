@@ -49,9 +49,39 @@
                     <label>
                         Platforms: <input type="text" name="platforms" value="<%= produse[i].platforms %>">
                     </label>
-                    <input type="submit" value="Save Changes">
+                    <input type="submit" name="moddel" value="Modify">
+                    <input type="submit" name="moddel" value="Delete">
                 </form>
                 <%}%>
+                    <form method="post" class="date" action="/addproduse" enctype="multipart/form-data">
+                        <label>
+                        Name: <input type="text" name="nume" value="">
+                    </label>
+                        <label>
+                        Description: <input type="text" name="descriere" value="">
+                    </label>
+                        <label>
+                        Storage size: <input type="text" name="storage_size" value="">
+                    </label>
+                        <label>
+                        Category: <select name="categorie_mare">
+                        <% for (let c of locals.categ) {%>
+                            <option value="<%=c.unnest%>"><%=c.unnest%></option>
+                        <%}%>
+                                </select>
+                    </label>
+                        <label>
+                        Source type: <select name="categorie_mica">
+                        <% for (let c of locals.categMica) {%>
+                            <option value="<%=c.unnest%>"><%=c.unnest%></option>
+                        <%}%>
+                                    </select>
+                    </label>
+                        <label>
+                        Platforms: <input type="text" name="platforms" value="">
+                    </label>
+                        <input type="submit" name="add" value="add">
+                    </form>
         </main>
 
 

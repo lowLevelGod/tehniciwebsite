@@ -84,6 +84,20 @@ if (process.env.SITE_ONLINE) {
 //     host: 'localhost',
 //     port: 5432
 // })
+
+function getIp(req) {
+    //pentru Heroku
+    var ip = req.headers["x-forwarded-for"]; //ip-ul userului pentru care este forwardat mesajul
+    if (ip) {
+        let vect = ip.split(",");
+        return vect[vect.length - 1];
+    } else if (req.ip) {
+        return req.ip;
+    } else {
+        return req.connection.remoteAddress;
+    }
+}
+
 client.connect()
 
 app = express()
@@ -92,6 +106,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
 
 app.use('/resurse', express.static(__dirname + '/resurse'))
+
 
 app.use(
     session({
@@ -141,6 +156,28 @@ app.use('/*', function(req, res, next) {
     })
 })
 
+app.get("/*", function(req, res, next) {
+    let id_utiliz = req.session.utilizator ? req.session.utilizator.id : null;
+    if (id_utiliz) {
+        let queryInsert = `insert into accesari(ip, user_id, pagina) values ('${getIp(req)}', '${id_utiliz}', '${req.url}')`;
+
+        client.query(queryInsert, function(err, rezQuery) {
+            if (err) console.log(err);
+        });
+    }
+    next();
+});
+
+
+function stergeAccesariVechi() {
+    let queryDelete = `delete from accesari where now() - data_accesare > interval '1 day'`;
+    client.query(queryDelete, function(err, rezQuery) {
+        if (err) console.log(err);
+    });
+}
+stergeAccesariVechi();
+setInterval(stergeAccesariVechi, 60 * 60 * 1000);
+
 app.use('/*', function(req, res, next) {
     client.query(
         'select * from unnest(enum_range(null::categorie_mare))',
@@ -161,6 +198,21 @@ app.use('/*', function(req, res, next) {
     )
 })
 
+app.use(['/', '/index', '/home'], function(req, res, next) {
+    //res.sendFile(__dirname+"/index1.html");
+    let querySelect =
+        "select username, nume, prenume, culoare_chat, acc.data_accesare from utilizatori join (select distinct on (a.user_id) a.user_id as user_id, a.data_accesare from accesari a order BY user_id, data_accesare DESC NULLS LAST, data_accesare) acc on utilizatori.id = acc.user_id and (now() - acc.data_accesare <= interval '8 minutes')";
+
+    client.query(querySelect, function(err, rezQuery) {
+        if (err) console.log(err);
+        else {
+            rezQuery.rows.sort((a, b) => a.data_accesare - b.data_accesare)
+            res.locals.utiliz_online = rezQuery.rows;
+        }
+        next();
+    });
+})
+
 console.log('Director proiect:', __dirname)
 
 app.get(['/', '/index', '/home'], function(req, res) {
@@ -168,7 +220,7 @@ app.get(['/', '/index', '/home'], function(req, res) {
     var quarter = Math.floor(new Date().getMinutes() / 15)
     client.query('select * from produse', function(err, rezQuery) {
         res.render('pagini/index', {
-            ip: req.ip,
+            ip: getIp(req),
             imagini: obImagini.imagini,
             quarter: quarter,
             produse: rezQuery.rows,
@@ -507,7 +559,7 @@ app.get('/useri', function(req, res) {
 app.post('/sterge_utiliz', function(req, res) {
     var formular = new formidable.IncomingForm()
     formular.parse(req, function(err, campuriText, campuriFisier) {
-        let queryDel = `delete from utilizatori where id=${campuriText.id_utiliz}`
+        let queryDel = `delete from utilizatori where id=${campuriText.id}`
         client.query(queryDel, function(err, rezQuery) {
             console.log(err)
                 // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
@@ -517,17 +569,46 @@ app.post('/sterge_utiliz', function(req, res) {
 })
 
 app.post('/modifproduse', function(req, res) {
-    var formular = new formidable.IncomingForm()
-    formular.parse(req, function(err, campuriText, campuriFisier) {
-        campuriText.platforms = "{" + campuriText.platforms + "}";
-        let queryUpdate = `update produse set nume='${campuriText.nume}', descriere='${campuriText.descriere}', storage_size='${campuriText.storage_size}', categorie_mare='${campuriText.categorie_mare}', categorie_mica='${campuriText.categorie_mica}', platforms='${campuriText.platforms}' where id='${campuriText.id}'`
-        console.log(queryUpdate);
-        client.query(queryUpdate, function(err, rezQuery) {
-            console.log(err)
-                // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
-            res.redirect('/administrare')
+    if (req.session.utilizator && req.session.utilizator.rol == 'admin') {
+        var formular = new formidable.IncomingForm()
+        formular.parse(req, function(err, campuriText, campuriFisier) {
+            console.log(campuriText);
+            if (campuriText.moddel == 'Modify') {
+                campuriText.platforms = "{" + campuriText.platforms + "}";
+                let queryUpdate = `update produse set nume='${campuriText.nume}', descriere='${campuriText.descriere}', storage_size='${campuriText.storage_size}', categorie_mare='${campuriText.categorie_mare}', categorie_mica='${campuriText.categorie_mica}', platforms='${campuriText.platforms}' where id='${campuriText.id}'`
+                    // console.log(queryUpdate);
+                client.query(queryUpdate, function(err, rezQuery) {
+                    console.log(err)
+                        // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
+                    res.redirect('/administrare');
+                })
+            } else if (campuriText.moddel == 'Delete') {
+                let queryDel = `delete from produse where id=${campuriText.id}`;
+                console.log(queryDel);
+                client.query(queryDel, function(err, rezQuery) {
+                    console.log(err)
+                        // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
+                    res.redirect('/administrare')
+                })
+            }
+            // res.redirect('/administrare')
         })
-    })
+    }
+})
+
+app.post('/addproduse', function(req, res) {
+    if (req.session.utilizator && req.session.utilizator.rol == 'admin') {
+        var formular = new formidable.IncomingForm()
+        formular.parse(req, function(err, campuriText, campuriFisier) {
+            campuriText.platforms = "{" + campuriText.platforms + "}";
+            let comandaInserare = `insert into produse (nume, descriere, pret, storage_size, categorie_mare,  categorie_mica, platforms) values ('${campuriText.nume}', '${campuriText.descriere}', '420.420', '${campuriText.storage_size}', '${campuriText.categorie_mare}', '${campuriText.categorie_mica}', '${campuriText.platforms}')`;
+            client.query(comandaInserare, function(err, rezQuery) {
+                console.log(err)
+                    // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
+                res.redirect('/administrare');
+            })
+        })
+    }
 })
 
 // ---------------- Update profil -----------------------------
@@ -548,42 +629,63 @@ app.post('/profil', function(req, res) {
         var criptareParolaNoua = crypto
             .scryptSync(campuriText.parola, parolaServer, 64)
             .toString('hex')
+        if (campuriText.mod == 'Send') {
+            var queryUpdate = `update utilizatori set nume='${campuriText.nume}', prenume='${campuriText.prenume}', email='${campuriText.email}', culoare_chat='${campuriText.culoare_chat}', imagine_profil='${campuriFile.poza.newFilename}', parola='${criptareParolaNoua}' where parola='${criptareParola}'`
+            client.query(queryUpdate, function(err, rez) {
+                if (err) {
+                    console.log(err)
+                    res.render('pagini/error_default', {
+                        text: 'Eroare baza date. Incercati mai tarziu.'
+                    })
+                    return
+                }
 
-        var queryUpdate = `update utilizatori set nume='${campuriText.nume}', prenume='${campuriText.prenume}', email='${campuriText.email}', culoare_chat='${campuriText.culoare_chat}', imagine_profil='${campuriFile.poza.newFilename}', parola='${criptareParolaNoua}' where parola='${criptareParola}'`
-        client.query(queryUpdate, function(err, rez) {
-            if (err) {
-                console.log(err)
-                res.render('pagini/error_default', {
-                    text: 'Eroare baza date. Incercati mai tarziu.'
-                })
-                return
-            }
+                if (rez.rowCount == 0) {
+                    res.render('pagini/profil', {
+                        mesaj: 'Update-ul nu s-a realizat. Verificati parola introdusa.'
+                    })
+                    return
+                } else {
+                    //actualizare sesiune
+                    req.session.utilizator.nume = campuriText.nume
+                    req.session.utilizator.prenume = campuriText.prenume
+                    req.session.utilizator.email = campuriText.email
+                    req.session.utilizator.culoare_chat = campuriText.culoare_chat
+                    req.session.utilizator.imagine = campuriFile.poza.newFilename
 
-            if (rez.rowCount == 0) {
+                    trimiteMail(
+                        campuriText.email,
+                        'Date schimbate',
+                        'mesaj text',
+                        `<p>${campuriText.username}</p><p>${campuriText.prenume}</p><p>${campuriText.email}</p>`
+                    )
+                }
+
                 res.render('pagini/profil', {
-                    mesaj: 'Update-ul nu s-a realizat. Verificati parola introdusa.'
+                    mesaj: 'Update-ul s-a realizat cu succes.'
                 })
-                return
-            } else {
-                //actualizare sesiune
-                req.session.utilizator.nume = campuriText.nume
-                req.session.utilizator.prenume = campuriText.prenume
-                req.session.utilizator.email = campuriText.email
-                req.session.utilizator.culoare_chat = campuriText.culoare_chat
-                req.session.utilizator.imagine = campuriFile.poza.newFilename
-
-                trimiteMail(
-                    campuriText.email,
-                    'Date schimbate',
-                    'mesaj text',
-                    `<p>${campuriText.username}</p><p>${campuriText.prenume}</p><p>${campuriText.email}</p>`
-                )
-            }
-
-            res.render('pagini/profil', {
-                mesaj: 'Update-ul s-a realizat cu succes.'
             })
-        })
+        } else if (campuriText.mod == 'Delete') {
+            let queryDel = `delete from utilizatori where id='${campuriText.id}' and parola='${criptareParola}'`;
+            console.log(queryDel);
+            client.query(queryDel, function(err, rezQuery) {
+                console.log(err)
+                if (err) {
+                    res.render('pagini/profil', {
+                        mesaj: 'Parola incorecta !'
+                    })
+                } else {
+                    // TO DO afisare a unui mesaj friendly pentru cazurile de succes si esec
+                    trimiteMail(
+                        campuriText.email,
+                        'La revedere',
+                        'mesaj text',
+                        `<p>La revedere ${campuriText.prenume}</p>`
+                    )
+                    res.redirect('/logout');
+                }
+            })
+        }
     })
 })
 
@@ -627,11 +729,19 @@ app.post('/promote', function(req, res) {
 
 
 app.get('/administrare', function(req, res) {
-    client.query('select * from produse', function(err, rezQuery) {
-        res.render('pagini/administrare', {
-            produse: rezQuery.rows,
+    if (req.session.utilizator && req.session.utilizator.rol == 'admin') {
+        client.query('select * from produse', function(err, rezQuery) {
+            res.render('pagini/administrare', {
+                produse: rezQuery.rows,
+            })
         })
-    })
+    }
+})
+
+app.get('/policy', function(req, res) {
+
+    res.render('pagini/policy');
+
 })
 
 app.get('/*', function(req, res) {

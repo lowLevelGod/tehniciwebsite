@@ -2,7 +2,7 @@ CREATE TYPE roluri AS ENUM('admin', 'comun');
 
 
 CREATE TABLE IF NOT EXISTS utilizatori (
-   id serial PRIMARY KEY,
+   id serial PRIMARY KEY REFERENCES event ON DELETE CASCADE,
    username VARCHAR(50) UNIQUE NOT NULL,
    nume VARCHAR(100) NOT NULL,
    prenume VARCHAR(100) NOT NULL,

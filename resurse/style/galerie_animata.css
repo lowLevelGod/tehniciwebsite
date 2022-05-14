@@ -26,7 +26,7 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
-    animation-duration: 18s;
+    animation-duration: 9s;
     border: 10px solid;
     border-image: url("../pics/Software480w.png") 10% round;
   }
@@ -47,30 +47,30 @@
 
   @keyframes gal_exemplu {
     0% {
-      z-index: 7;
-      opacity: 1;
-    }
-    8.3333333333% {
-      clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
-    }
-    15.625% {
+      z-index: 4;
       opacity: 1;
     }
     16.6666666667% {
-      z-index: 7;
+      clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
+    }
+    31.25% {
+      opacity: 1;
+    }
+    33.3333333333% {
+      z-index: 4;
       opacity: 0;
       clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 0, 0% 0, 0% 100%, 0 100%, 0 0);
     }
-    16.6676666667% {
-      z-index: -7;
+    33.3343333333% {
+      z-index: -4;
       clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
     }
-    83.3333333333% {
+    66.6666666667% {
       opacity: 0;
-      z-index: -7;
+      z-index: -4;
       clip-path: polygon(100% 0, 100% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 0 100%, 0 0);
     }
-    83.3343333333% {
+    66.6676666667% {
       z-index: 0;
     }
     100% {
@@ -78,27 +78,15 @@
       z-index: 0;
     }
   }
-  .galerie-animata figure:nth-of-type(6) {
+  .galerie-animata figure:nth-of-type(3) {
     animation-delay: 0s;
   }
 
-  .galerie-animata figure:nth-of-type(5) {
+  .galerie-animata figure:nth-of-type(2) {
     animation-delay: 3s;
   }
 
-  .galerie-animata figure:nth-of-type(4) {
-    animation-delay: 6s;
-  }
-
-  .galerie-animata figure:nth-of-type(3) {
-    animation-delay: 9s;
-  }
-
-  .galerie-animata figure:nth-of-type(2) {
-    animation-delay: 12s;
-  }
-
   .galerie-animata figure:nth-of-type(1) {
-    animation-delay: 15s;
+    animation-delay: 6s;
   }
 }
