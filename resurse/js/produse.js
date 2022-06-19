@@ -1,5 +1,20 @@
 window.addEventListener("DOMContentLoaded", function() {
 
+
+    let iduriProduse = localStorage.getItem("cos_virtual");
+    if (iduriProduse) {
+        iduriProduse = iduriProduse.split(",");
+    } else {
+        iduriProduse = [];
+    }
+    for (let id_p of iduriProduse) {
+        var ch = document.querySelector(`[value='${id_p}'].select-cos`);
+        if (ch) {
+            ch.checked = true;
+        }
+    }
+
+
     var slider = document.getElementById("priceRange");
     var output = document.getElementById("inp-price");
 
@@ -174,42 +189,24 @@ window.addEventListener("DOMContentLoaded", function() {
             art.style.display = "grid";
         }
     }
-
-    // -------------------- selectare produse cos virtual----------------------------------
-    /*
-        indicatie pentru cand avem cantitati
-        fara cantitati: "1,2,3,4" //1,2,3,4 sunt id-uri
-        cu cantitati:"1:5,2:3,3:1,4:1" // 5 produse de tipul 1, 3 produse de tipul 2, 1 produs de tipul 3...
-        putem memora: [[1,5],[2,3],[3,1],[4,1]]// un element: [id, cantitate]
-
-    */
-    ids_produse_init = localStorage.getItem("produse_selectate");
-    if (ids_produse_init)
-        ids_produse_init = ids_produse_init.split(","); //obtin vectorul de id-uri ale produselor selectate  (din cosul virtual)
-    else
-        ids_produse_init = []
-
-    var checkboxuri_cos = document.getElementsByClassName("select-cos");
-    for (let ch of checkboxuri_cos) {
-        if (ids_produse_init.indexOf(ch.value) != -1)
-            ch.checked = true;
+    var checkboxuri = this.document.getElementsByClassName("select-cos");
+    for (let ch of checkboxuri) {
         ch.onchange = function() {
-            ids_produse = localStorage.getItem("produse_selectate")
-            if (ids_produse)
-                ids_produse = ids_produse.split(",");
-            else
-                ids_produse = []
-            console.log("Selectie veche:", ids_produse);
-            //ids_produse.map(function(elem){return parseInt(elem)});
-            //console.log(ids_produse);
-            if (ch.checked) {
-                ids_produse.push(ch.value); //adaug elementele noi, selectate (bifate)
+            let iduriProduse = localStorage.getItem("cos_virtual");
+            //hint pentru cantitate "1|20,5|10,3|2" 20 produse cu id-ul 1...
+            if (iduriProduse) {
+                iduriProduse = iduriProduse.split(",");
             } else {
-                ids_produse.splice(ids_produse.indexOf(ch.value), 1) //sterg elemente debifate
+                iduriProduse = [];
             }
-            console.log("Selectie noua:", ids_produse);
-            localStorage.setItem("produse_selectate", ids_produse.join(","))
-        }
+            if (this.checked) {
+                iduriProduse.push(this.value); //aici avem id-ul produsului
+            } else {
+                var poz = iduriProduse.indexOf(this.value);
+                if (poz != -1) iduriProduse.splice(poz, 1);
+            }
+            localStorage.setItem("cos_virtual", iduriProduse.join(","));
+        };
     }
 });
 

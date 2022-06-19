@@ -7,10 +7,12 @@
     <%- include("../../fragmente/head.ejs") %>
         <script type="text/javascript" src=/resurse/js/produse.js></script>
         <link rel="stylesheet" href="/resurse/style/produs.css">
+        <script type="text/javascript" src=/resurse/js/cookies_up_produse.js></script>
 </head>
 
 <body>
     <%- include("../../fragmente/header.ejs") %>
+        <p id="ultim_produs">Last product seen is <span id="ultim_produs_val" style="color:aqua"></span></p>
         <main>
             <label>Key word : <input type="text" id="inp-keyword"></label>
             <label> Min price: <%-locals.max_price%> <input type="range" id="priceRange" value="0" min="<%-locals.max_price%>"  max="<%-locals.min_price%>"> <%-locals.min_price%>(<span id="inp-price"><%-locals.max_price%></span>)</label>

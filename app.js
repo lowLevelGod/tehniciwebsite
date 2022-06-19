@@ -116,6 +116,8 @@ app.use(
     })
 )
 
+app.use(["/produse_cos", "/cumpara", "/mesaj"], express.json({ limit: "2mb" }));
+
 app.use('/*', function(req, res, next) {
     res.locals.utilizator = req.session.utilizator
     res.locals.mesajLogin = req.session.mesajLogin
@@ -398,6 +400,78 @@ function genereazaToken(n) {
     }
     return token
 }
+
+
+//############################# Cos virtual ###################################
+
+app.post("/produse_cos", function(req, res) {
+    console.log("La la la", req.body);
+    if (req.body.ids_prod.length != 0) {
+        let querySelect = `select * from produse where id in (${req.body.ids_prod.join(",")})`;
+        client.query(querySelect, function(err, rezQuery) {
+            if (err) {
+                console.log(err);
+                res.send("Eroare baza de date");
+            } else {
+                res.send(rezQuery.rows);
+            }
+        });
+    } else {
+        res.send([]);
+    }
+});
+
+app.post("/cumpara", function(req, res) {
+    if (!req.session.utilizator) {
+        randeazaEroare(res, -1, "Eroare", "Nu sunteti logat.");
+        return;
+    }
+    //TO DO verificare id-uri pentru query-ul la baza de date
+    console.log("Hey", req.body.ids_prod, "Hey");
+    client.query("select * from produse where id in (" + req.body.ids_prod + ")", function(err, rez) {
+        //console.log(err, rez);
+        //console.log(rez.rows);
+
+        let rezFactura = ejs.render(fs.readFileSync("views/pagini/factura.ejs").toString("utf8"), { utilizator: req.session.utilizator, produse: rez.rows, data: getDate(), protocol: obGlobal.protocol, domeniu: obGlobal.numeDomeniu });
+        //console.log(rezFactura);
+        let options = { format: "A4", args: ["--no-sandbox", "--disable-extensions", "--disable-setuid-sandbox"] };
+
+        let file = { content: juice(rezFactura, { inlinePseudoElements: true }) };
+
+        html_to_pdf.generatePdf(file, options).then(function(pdf) {
+            if (!fs.existsSync("./temp")) fs.mkdirSync("./temp");
+            var numefis = "./temp/test" + new Date().getTime() + ".pdf";
+            fs.writeFileSync(numefis, pdf);
+            let mText = `Stimate ${req.session.utilizator.username}, aveți atașată factura.`;
+            let mHtml = `<h1>Salut!</h1><p>${mText}</p>`;
+
+            trimiteMail(req.session.utilizator.email, "Factura", mText, mHtml, [{
+                filename: "factura.pdf",
+                content: fs.readFileSync(numefis),
+            }, ]);
+            res.write("Totu bine!");
+            res.end();
+            // res.render("pagini/cos-virtual", { type: true, raspuns: "Procesul s-a incheiat cu succes" });
+            let factura = { data: new Date(), username: req.session.utilizator.username, produse: rez.rows };
+            obGlobal.bdMongo.collection("facturi").insertOne(factura, function(err, res) {
+                if (err) console.log(err);
+                else {
+                    console.log("Am inserat factura in mongodb");
+                    //doar de debug:
+                    obGlobal.bdMongo
+                        .collection("facturi")
+                        .find({})
+                        .toArray(function(err, result) {
+                            if (err) console.log(err);
+                            else console.log(result);
+                        });
+                }
+            });
+        });
+    });
+});
+
+
 
 parolaServer = 'tehniciweb'
 app.post('/companyform', function(req, res) {

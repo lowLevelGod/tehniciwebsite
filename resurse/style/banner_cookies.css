@@ -1,0 +1,42 @@
+@media only screen and (min-width:800px) {
+    #banner_cookies {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 25vw;
+        height: 25vw;
+        font-size: 1.2vw;
+        z-index: 30;
+        opacity: 75;
+        background-color: var(--sec-bg-color);
+    }
+}
+
+@media only screen and (min-width:1600px) {
+    @keyframes banner_cookie_animation {
+        0% {
+            transform: scale(0, 0);
+            opacity: 0;
+            background-color: aliceblue;
+        }
+        80% {
+            transform: scaleY(1.1)
+        }
+        100% {
+            opacity: 75;
+            background-color: var(--sec-bg-color);
+            transform: scale(1, 1);
+        }
+    }
+    #banner_cookies {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 25vw;
+        height: 25vw;
+        font-size: 1.2vw;
+        z-index: 30;
+        animation: banner_cookie_animation 5000ms ease-in-out forwards;
+        transform-origin: bottom left;
+    }
+}
